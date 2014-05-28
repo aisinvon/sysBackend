@@ -1,0 +1,181 @@
+<!-- main content -->
+<div class="main wrap clearfix">
+	<h3 class="pg_tit">Staff List in MIS</h3>
+	<!-- angularWrap -->
+	<div id="angularWrap" data-source="../js/json/listStaff.json">
+    <!-- <div id="angularWrap" data-prefix="SystemMenuWebAPIJSon/GetStaffListInPris" data-source="SystemMenuWebAPIJSon/GetStaffListInPris?from_enrolldate=&to_enrolldate=&from_resigned=&to_resigned=&lanid=&name=&resourceCategory=&banding=&degree=&cccode=&staffstatus="> -->
+		
+		<ul class="tab_tit clearfix">
+		    <li class="on"><a href="#staff-list">Staff List in MIS<i></i></a></li>
+            <li><a href="#changed-list">Changed List<i></i></a></li>
+            <li><a href="#import-staff">Import Staff<i></i></a></li>
+            <li><a href="#add-new-staff">Add New Staff<i></i></a></li>
+            <li><a href="#change-staff-status">Change Staff Status<i></i></a></li>
+		</ul>
+
+		<!-- mod_filter -->
+		<div class="mod_filter filter_staff clearfix">
+            <div class="clearfix">
+    		    <div class="item">
+                    <label class="label" for="lanid">Lan ID:</label>
+                    <input ng-model="search.lanid" ng-init="search.lanid=''" name="lanid" id="lanid" class="text" type="text" />
+                </div>
+                <div class="item">
+                    <label class="label" for="name">Name:</label>
+                    <input ng-model="search.name" ng-init="search.name=''" name="name" id="name" class="text" type="text" />
+                </div>
+                <div class="item">
+                    <label class="label" for="resourceCategory">Resource Category:</label>
+                    <select ng-model="search.resourceCategory" ng-init="search.resourceCategory=''" name="resourceCategory" id="resourceCategory">
+                        <option value=""></option>
+                        <option ng-repeat="(index, value) in resoCates" value="{{value}}">{{value}}</option>
+                    </select>
+                </div>
+                <div class="item item_short">
+                    <label class="label" for="from_enrolldate">Enrolled From:</label>
+                    <input datepicker ng-model="search.from_enrolldate" ng-init="search.from_enrolldate=''" name="from_enrolldate" type="text" id="from_enrolldate" class="text" />
+                    To:
+                    <input datepicker ng-model="search.to_enrolldate" ng-init="search.to_enrolldate=''" name="to_enrolldate" type="text" id="to_enrolldate" class="text" />
+                </div>
+                <div class="item">
+                    <label class="label" for="staffstatus">Staff Status:</label>
+                    <select ng-model="search.staffstatus" ng-init="search.staffstatus=''" name="staffstatus" id="staffstatus">
+                        <option value=""></option>
+                        <option value="1">Normal</option>
+                        <option value="0">Termination</option>
+                    </select>
+                </div>
+                <div class="item item_short">
+                    <label class="label" for="from_resigned">Resigned From:</label>
+                    <input datepicker ng-model="search.from_resigned" ng-init="search.from_resigned=''" name="from_resigned" type="text" id="from_resigned" class="text" />
+                    To:
+                    <input datepicker ng-model="search.to_resigned" ng-init="search.to_resigned=''" name="to_resigned" type="text" id="to_resigned" class="text" />
+                </div>
+                <div class="item">
+                    <label class="label" for="banding">Banding:</label>
+                    <select ng-model="search.banding" ng-init="search.banding=''" name="banding" id="banding">
+                        <option value=""></option>
+                        <option value="SA1">SA1</option>
+                        <option value="SA2">SA2</option>
+                        <option value="SA">SA</option>
+                        <option value="Officer">Officer</option>
+                        <option value="AVP">AVP</option>
+                        <option value="VP">VP</option>
+                        <option value="SVP">SVP</option>
+                        <option value="EVP">EVP</option>
+                    </select>
+                </div>
+                <div class="item">
+                    <label class="label" for="degree">Degree:</label>
+                    <select ng-model="search.degree" ng-init="search.degree=''" name="degree" id="">
+                        <option value=""></option>
+                        <option value="Associate">Associate</option>
+                        <option value="Bachelor">Bachelor</option>
+                        <option value="Master">Master</option>
+                        <option value="PHD">PHD</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+                <div class="item">
+                    <label class="label" for="cccode">Cost Center:</label>
+                    <select ng-model="search.cccode" ng-init="search.cccode=''" name="cccode" id="cccode">
+                        <option value=""></option>
+                        <option ng-repeat="cc in costCenters" value="{{cc.costCenter}}">{{cc.costCenter}}</option>
+                    </select>
+                </div>
+            </div>
+            <p class="tr">
+            	<button ng-click="itemSearch(search)" type="button" class="js_showPopBtn auto_btn prim">Search</button>
+            	<!-- <input ng-model="search.incompleted" id="incompleted" class="checkbox" type="checkbox" /><label class="ml" for="incompleted">Show only employees with incompleted information</label> -->
+            </p>
+		</div>
+		<!-- / mod_filter -->
+
+        <!-- page_nav -->
+        <div class="page_nav clearfix">
+            <ul class="fr">
+                <li ng-class="{disabled: currentPage == 0}" ng-click="prevPage()">
+                    <a href="javascript:;">« Prev</a>
+                </li>
+                <li ng-click="setPage(10)"><span>{{currentPage+1}}/{{numberOfPages()}}</span></li>
+                <li ng-class="{disabled: currentPage >= numberOfPages() - 1}" ng-click="nextPage()">
+                    <a href="javascript:;">Next »</a>
+                </li>
+            </ul>
+        </div>
+        <!-- / page_nav -->
+
+		<table class="table_admin table_menu">
+			<thead>
+				<tr>
+					<th class="sortable" ng-click="orderByField='lanId'; reverseSort = !reverseSort">
+                        Lan ID
+                        <span ng-show="orderByField == 'lanId'">
+                            <b ng-show="reverseSort">↑</b>
+                            <b ng-show="!reverseSort">↓</b>
+                        </span>
+                    </th>
+					<th class="sortable" ng-click="orderByField='name'; reverseSort = !reverseSort">
+                        Name
+                        <span ng-show="orderByField == 'name'">
+                            <b ng-show="reverseSort">↑</b>
+                            <b ng-show="!reverseSort">↓</b>
+                        </span>
+                    </th>
+					<th>Enroll Date</th>
+					<th>Cost Center</th>
+					<th>Cost Center Name</th>
+					<th>Resource Category</th>
+					<th>Operation</th>
+				</tr>
+			</thead>
+			<tbody>
+                <tr class="tip_loading">
+                    <td colspan="7">
+                        <img src="../images/pris_loading.gif" alt="loading" />
+                    </td>
+                </tr>
+				<tr ng-repeat="item in items | orderBy:orderByField:!reverseSort | startFrom: currentPage*numLimit |  limitTo: numLimit" ng-cloak>
+					<td>{{item.lanId}}</td>
+					<td>{{item.name}}</td>
+					<td>{{item.enrollDate | date:'yyyy-MM-dd'}}</td>
+					<td>{{item.costCenter}}</td>
+					<td>{{item.costCenterName}}</td>
+					<td>{{item.resourceCategory}}</td>
+					<td>
+						<a target="_blank" href="profile.html?lanId={{item.lanId}}"><i class="penIco"></i>Edit</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+        <!-- page_nav -->
+        <div class="page_nav clearfix">
+            <ul class="fr">
+                <li ng-class="{disabled: currentPage == 0}" ng-click="prevPage()">
+                    <a href="javascript:;">« Prev</a>
+                </li>
+                <li ng-click="setPage(10)"><span>{{currentPage+1}}/{{numberOfPages()}}</span></li>
+                <li ng-class="{disabled: currentPage >= numberOfPages() - 1}" ng-click="nextPage()">
+                    <a href="javascript:;">Next »</a>
+                </li>
+            </ul>
+        </div>
+        <!-- / page_nav -->
+
+	</div>
+	<!-- / angularWrap -->
+</div>
+<!-- / main content -->
+
+<!--mask of pop up window-->
+<div id="pop_win_mask" class="pop_win_mask" ></div>
+<!-- pop up window -->
+<div id="pop_win" class="pop_win">                
+    <div class="pop_win_in_mask"></div>
+    <!--loading image, class 'none'=" display:none"-->
+    <div id="pop_loading" class="pop_win_in center pop_loading">
+        <img src="../images/pris_loading.gif" alt="loading" />
+    </div>
+</div>
+<!-- / pop up window -->

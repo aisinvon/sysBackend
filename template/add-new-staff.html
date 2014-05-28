@@ -1,0 +1,95 @@
+	<!-- main content -->
+	<div class="main wrap clearfix">
+		<h3 class="pg_tit">Add New Staff</h3>
+		<!-- angularWrap -->
+		<div id="angularWrap" data-source="../js/json/listStaff.json">
+		<!-- <div id="angularWrap" data-prefix="SystemMenuWebAPIJSon/AddNewStaff" data-source="SystemMenuWebAPIJSon/GetAddNewStaff?lanids=null"> -->
+		<!-- <div id="angularWrap" data-prefix="SystemMenuWebAPIJSon/AddNewStaff"> -->
+
+			<ul class="tab_tit clearfix">
+			    <li><a href="#staff-list">Staff List in MIS<i></i></a></li>
+			    <li><a href="#changed-list">Changed List<i></i></a></li>
+			    <li><a href="#import-staff">Import Staff<i></i></a></li>
+			    <li class="on"><a href="#add-new-staff">Add New Staff<i></i></a></li>
+			    <li><a href="#change-staff-status">Change Staff Status<i></i></a></li>
+			</ul>
+
+			<!-- mod_filter -->
+			<div class="mod_filter filter_staff clearfix">
+			    <div class="mt">
+			        <p for="multiLanId">Search by User's Lan IDs(One Lan ID in Each Line):</p>
+			        <div class="summary">
+                        <textarea ng-model="multiValue" name="multiValue" id="multiLanId"></textarea>
+                    </div>
+			    </div>
+			    <p class="mt">
+			    	<button ng-click="multiSearch(multiValue)" type="button" class="js_showPopBtn auto_btn prim fr">Search</button>
+			    </p>
+			</div>
+			<!-- / mod_filter -->
+
+		    <table class="table_admin table_menu mt">
+		        <thead>
+		            <tr>
+    					<th class="sortable" ng-click="orderByField='lanId'; reverseSort = !reverseSort">
+                            Lan ID
+                            <span ng-show="orderByField == 'lanId'">
+                                <b ng-show="reverseSort">↑</b>
+                                <b ng-show="!reverseSort">↓</b>
+                            </span>
+                        </th>
+    					<th class="sortable" ng-click="orderByField='name'; reverseSort = !reverseSort">
+                            Name
+                            <span ng-show="orderByField == 'name'">
+                                <b ng-show="reverseSort">↑</b>
+                                <b ng-show="!reverseSort">↓</b>
+                            </span>
+                        </th>
+		                <th>Reporting Manager</th>
+		                <th>Status</th>
+		                <th>Resource Category</th>
+		                <th>Cost Center</th>
+		                <th>CC Name</th>
+		                <th>Existed in MIS</th>
+		                <th>
+		                	<input ng-model="selectedAll" ng-click="checkAll()" type="checkbox" />
+		                </th>
+		            </tr>
+		        </thead>
+		        <tbody>
+	            	<tr ng-repeat="item in items | orderBy:orderByField:!reverseSort" ng-cloak>
+		                <td>{{item.lanId}}</td>
+		                <td>{{item.name}}</td>
+		                <td>{{item.reportingManager}}</td>
+		                <td>{{item.status}}</td>
+		                <td>{{item.resourceCategory}}</td>
+		                <td>{{item.costCenter}}</td>
+		                <td>{{item.ccName}}</td>
+		                <td>{{item.existedInMIS}}</td>
+		                <td>
+		                	<input type="checkbox" ng-model="item.selected" />
+		                </td>
+		            </tr>
+		        </tbody>
+		    </table>
+
+		    <p class="mt tr">
+                <button ng-click="staffSbmt('mis')" class="js_showPopBtn auto_c_btn prim sbmt" type="button">Add To MIS</button>
+            </p>
+			
+		</div>
+		<!-- / angularWrap -->
+	</div>
+	<!-- / main content -->
+
+	<!--mask of pop up window-->
+	<div id="pop_win_mask" class="pop_win_mask" ></div>
+	<!-- pop up window -->
+	<div id="pop_win" class="pop_win">                
+	    <div class="pop_win_in_mask"></div>
+	    <!--loading image, class 'none'=" display:none"-->
+	    <div id="pop_loading" class="pop_win_in center pop_loading">
+	        <img src="../images/pris_loading.gif" alt="loading" />
+	    </div>
+	</div>
+	<!-- / pop up window -->

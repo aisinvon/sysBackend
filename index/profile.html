@@ -1,0 +1,366 @@
+<!DOCTYPE HTML>
+<html>
+    
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <title>Edit Staff Status</title>
+        <link rel="stylesheet" type="text/css" href="../css/base.css" />
+        <link rel="stylesheet" type="text/css" href="../css/pris.css" />
+        <!-- jQuery ui-->
+        <link rel="stylesheet" type="text/css" href="../css/plugins/jquery-ui/jquery.ui.min.css" />
+    </head>
+    
+    <body>
+        <div class="pageWrapper">
+            <!-- header -->
+            <!-- top -->
+            <div class="top clearfix">
+                <div class="wrap">
+                    <a class="logo" href=""><img src="../images/logo.png" alt="Company" /></a>
+                    <a href=""><img class="slogan" src="../images/slogan.png" alt="Company Hangzhou: Management Information System (MIS)" /></a>   
+                </div>
+            </div>
+            <!-- / top -->
+
+            <!-- nav -->
+            <div class="nav">
+                <div class="wrap">
+                    <ul class="clearfix">
+                        <!-- add class on, then that nav will be highlighted -->
+                        <li class="nav_home"><a href="../../"><i class="navIco"></i>Homepage<i class="downArowIco"></i></a></li>
+                        <li class="nav_setting on">
+                            <a href="../index"><i class="navIco"></i>System Menu<i class="downArowIco"></i></a>
+                            <!-- second level menu -->
+                            <ul>
+                                <li>
+                                   <a href="../menu/#/menu">Set Menu Access</a>
+                                </li>
+                                <li>
+                                   <a href="../role/#/role">Set User Role</a>
+                                </li>
+                                <li>
+                                   <a href="../index/#staff-list">Staff Management</a>
+                                </li>
+                            </ul>
+                            <!-- / second level menu -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- / nav -->
+            <!-- / header -->
+
+            <form action="">
+            <!-- main content -->
+            <div class="main wrap clearfix">
+                <h3 class="pg_tit">Edit Staff Status</h3>
+
+                <div class="mod_white clearfix">
+                    <button class="black_btn fr" type="button">Print</button>
+                    <button class="js_sbmt_btn black_btn prim fr" type="button">Save</button>
+                    <a class="black_btn" href="http://pris/V2/">Return</a>
+                </div>
+
+                <!-- pg_profile-->
+                <div class="pg_profile">
+                    <h3>Basic Information (
+                        <b class="must_dot">*</b>Required)</h3>
+                    <!-- mod_input-->
+                    <div class="mod_input">
+                        <!-- mod_input_l-->
+                        <div class="mod_input_l">
+                            <div class="item clearfix">
+                                <label class="label" for="UID">Lan ID:</label>
+                                <input id="UID" class="text" disabled="disabled" type="text" value="e560162" tip="enter lan id" />
+                            </div>
+                            <div class="item clearfix">
+                                <label class="label" for="EPNameCN">Chinese Name:</label>
+                                <input id="EPNameCN" class="text" disabled="disabled" type="text" value="大大大" tip="enter name" />
+                            </div>
+                            <div class="item clearfix">
+                                <label class="label" for="EPNameEN">English Name:</label>
+                                <input id="EPNameEN" class="text" disabled="disabled" type="text" value="Feng, Weixing" />
+                            </div>
+                            <div class="item clearfix">
+                                <label class="label" for="n_name">Nick Name:</label>
+                                <input id="n_name" class="text" disabled="disabled" type="text" tip="enter text" />
+                                <!-- <p class="field-validation-error">This is error message</p> -->
+                            </div>
+                            <div class="item clearfix">
+                                <label class="label" for="gender">Gender:</label>
+                                <select name="" id="gender" disabled="disabled">
+                                    <option value="female">female</option>
+                                    <option value="male">male</option>
+                                </select>
+                            </div>
+                            <div class="item clearfix">
+                                <label class="label" for="Birthdate">Birth Date:</label>
+                                <input id="Birthdate" class="text date_month" disabled="disabled" type="text" tip="enter date" />
+                            </div>
+                            <div class="item clearfix">
+                                <label class="label" for="GraduatedYear">
+                                    <b>*</b>Graduated Year:</label>
+                                <select name="" id="GraduatedYear" disabled="disabled">
+                                    <option value="2013">2013</option>
+                                    <option value="2012">2012</option>
+                                    <option value="2011">2011</option>
+                                    <option value="2010">2010</option>
+                                    <option value="2009">2009</option>
+                                </select>
+                            </div>
+                            <div class="item clearfix">
+                                <label class="label" for="m_hr">Major HR:</label>
+                                <input id="m_hr" class="text" type="text" disabled="disabled" tip="enter text" />
+                            </div>
+                        </div>
+                        <!-- / mod_input_l-->
+                        <!-- mod_input_r-->
+                        <div class="mod_input_r">
+                            <div class="user_img">
+                                <img id="user_img" src="../images/user_img.jpg" alt="user image" />
+                            </div>
+                            <!-- img upload simulate -->
+                            <div class="img_upload">
+                                <button id="up_btn" class="up_btn" type="button" data-title="no_tit_tip"><i class="uploadIco"></i>Browse</button>
+                            </div>
+                            <p id="up_erorMsg" class="up_erorMsg"></p>
+                            <!-- / img upload simulate -->
+                            <p class="upload_tip">120*140px,less than 200kb,Jpg. GIF. PNG. required.</p>
+                            <div class="item clearfix">
+                                <label class="label" for="Education">
+                                    <b>*</b>Degree:</label>
+                                <select name="" id="Education" disabled="disabled">
+                                    <option value="Bachelor">Bachelor</option>
+                                    <option value="Doctor">Doctor</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- / mod_input_r-->
+                    </div>
+                    <!-- / mod_input-->
+                    <!-- mod_input-->
+                    <div class="mod_input">
+                        <!-- mod_input_l-->
+                        <div class="mod_input_l">
+                            <div class="item clearfix">
+                                <label class="label" for="EnrollDate">Enroll Date:</label>
+                                <input id="EnrollDate" class="text date_month" type="text" />
+                            </div>
+                            <div class="item clearfix">
+                                <label class="label" for="bu">Business Unit:</label>
+                                <input id="bu" class="text" disabled="disabled" type="text" value="error" />
+                            </div>
+                            <div class="item clearfix">
+                                <label class="label" for="ResCate">Resource type:</label>
+                                <input id="ResCate" class="text" type="text" value="FTE" />
+                            </div>
+                            <div class="item clearfix">
+                                <label class="label" for="CCName">Cost Center:</label>
+                                <input id="CCName" class="text" disabled="disabled" type="text" title="1339001" value="1339001" />
+                            </div>
+                        </div>
+                        <!-- / mod_input_l-->
+                        <!-- mod_input_r-->
+                        <div class="mod_input_r">
+                            <div class="item clearfix">
+                                <label class="label" for="f_date">FTE Date:</label>
+                                <input id="f_date" class="text date_month" type="text" />
+                            </div>
+                            <div class="item clearfix">
+                                <label class="label" for="TeamID">
+                                    <b>*</b>Team/Dept:</label>
+                                <input id="TeamID" class="text" disabled="disabled" type="text" tip="enter text" />
+                            </div>
+                            <div class="item clearfix">
+                                <label class="label" for="ServiceCategory">Service Category:</label>
+                                <input id="ServiceCategory" class="text" type="text" value="DEV" />
+                            </div>
+                            <div class="item clearfix">
+                                <label class="label" for="banding">Banding:</label>
+                                <select name="" id="banding" disabled="disabled">
+                                    <option value="banding1">banding1</option>
+                                    <option value="banding2">banding2</option>
+                                    <option value="banding3">banding3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- / mod_input_r-->
+                    </div>
+                    <!-- / mod_input-->
+                    <!-- mod_input-->
+                    <div class="mod_input">
+                        <!-- mod_input_l-->
+                        <div class="mod_input_l">
+                            <div class="item clearfix">
+                                <label class="label" for="Addr">Office Location:</label>
+                                <select name="" id="Addr" disabled="disabled">
+                                    <option value="HZ4">HZ4</option>
+                                    <option value="HZ5">HZ5</option>
+                                    <option value="HZ6">HZ6</option>
+                                </select>
+                            </div>
+                            <div class="item clearfix">
+                                <label class="label" for="l_loc">Live Location:</label>
+                                <input id="l_loc" class="text" disabled="disabled" type="text" tip="enter text" />
+                            </div>
+                            <div class="item clearfix">
+                                <label class="label" for="Tel">Office Tel:</label>
+                                <input id="Tel" class="text" disabled="disabled" type="text" tip="enter text" />
+                            </div>
+                            <div class="item clearfix">
+                                <label class="label" for="is_rev">Is Reviewer:</label>
+                                <input id="is_rev" class="checkbox" disabled="disabled" type="checkbox" />
+                            </div>
+                            <div class="item clearfix">
+                                <label class="label" for="c_tree">Call Tree Level:</label>
+                                <input id="c_tree" class="text" disabled="disabled" type="text" tip="enter text" />
+                            </div>
+                        </div>
+                        <!-- / mod_input_l-->
+                        <!-- mod_input_r-->
+                        <div class="mod_input_r">
+                            <div class="item clearfix">
+                                <label class="label" for="Seat">Seat:</label>
+                                <input id="Seat" class="text" disabled="disabled" type="text" tip="enter text" />
+                            </div>
+                            <div class="item clearfix">
+                                <label class="label" for="i_acc">Internet Access:</label>
+                                <input id="i_acc" class="checkbox" disabled="disabled" type="checkbox" />
+                            </div>
+                            <div class="item clearfix">
+                                <label class="label" for="mTel">Mobile Tel:</label>
+                                <input id="mTel" class="text" disabled="disabled" type="text" tip="enter text" />
+                            </div>
+                            <!-- blank -->
+                            <div class="item clearfix">
+                                <label class="label">&nbsp;</label>
+                                <input class="text hidden" type="text" tip="enter text" />
+                            </div>
+                            <!-- / blank -->
+                            <div class="item clearfix">
+                                <label class="label" for="c_tree_b">Call Tree Backup:</label>
+                                <input id="c_tree_b" class="text" disabled="disabled" type="text" tip="enter text" />
+                            </div>
+                        </div>
+                        <!-- / mod_input_r-->
+                    </div>
+                    <!-- / mod_input-->
+
+                    <!-- mod_toggle -->
+                    <div id="work_expe" class="mod_toggle on">
+                        <div class="item clearfix">
+                            <label class="label" for="tran_reso">Transition Resource:</label>
+                            <input id="tran_reso" class="checkbox" type="checkbox" />
+                        </div>
+
+                        <h4>
+                            <i title="add new record" class="newInfoIco"></i>
+                        </h4>
+
+                        <div class="toggle_con">
+                            <!-- mod_input-->
+                            <div class="mod_input" style="border-top:none;">
+                                <!-- mod_input_l-->
+                                <div class="mod_input_l">
+                                    <div class="item clearfix">
+                                        <label class="label" for="date_from">From:</label>
+                                        <input id="date_from" class="text date_month" type="text" max-date="2y" />
+                                    </div>
+                                </div>
+                                <!-- / mod_input_l-->
+                                <!-- mod_input_r-->
+                                <div class="mod_input_r">
+                                   <div class="item clearfix">
+                                       <label class="label" for="date_to">To:</label>
+                                       <input id="date_to" class="text date_month" type="text" max-date="2y" />
+                                   </div>
+                                </div>
+                                <!-- / mod_input_r-->
+                                <i title="delete this record" class="delInfoIco"></i>
+                            </div>
+                            <!-- / mod_input-->
+                            <p class="upload_tip"></p>
+                        </div>
+                    </div>
+                    <!-- / mod_toggle -->
+                </div>
+                <!-- / pg_profile-->
+    
+                <div class="mod_white clearfix">
+                    <button class="black_btn fr" type="button">Print</button>
+                    <button class="js_sbmt_btn black_btn prim fr" type="button">Save</button>
+                    <a class="black_btn" href="http://pris/V2/">Return</a>
+                </div>
+            </div>
+            <!-- / main content -->
+            </form>
+
+            <!-- footer -->
+            <div class="footer clearfix">
+                <div class="wrap">
+                    <a href="homepage.html" class="logo">Company</a>
+                    <ul>
+                        <li>
+                            <a href="">SSTC</a>
+                        </li>
+                        <li>
+                            <a href="">Atrack</a>
+                        </li>
+                        <li>
+                            <a href="">SSHOME</a>
+                        </li>
+                        <li>
+                            <a href="">LMS</a>
+                        </li>
+                        <li>
+                            <a href="">Support</a>
+                        </li>
+                        <li>
+                            <a href="">eBusiness</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- / footer -->
+            
+            <!-- fixed elements -->
+            <div class="fixed">
+                <a title="Go to top" class="btn to_top" href="javascript:;">Go to top</a>
+            </div>
+            <!-- / fixed elements -->
+            
+            <script type="text/javascript" src="../js/scripts/jQuery/jQuery.1.7.2.min.js"></script>
+            <script type="text/javascript" src="../js/scripts/jQuery/underscore.js"></script>
+            <!--profile page js-->
+            <script type="text/javascript" src="../js/scripts/jQuery/pris.js"></script>
+            <!--jquery validate-->
+            <script type="text/javascript" src="../js/scripts/jQuery/jquery.validate.js"></script>
+            <script type="text/javascript" src="../js/scripts/jQuery/jquery.validate.unobtrusive.js"></script>
+            <script type="text/javascript" src="../js/scripts/jQuery/jquery.validate.unobtrusive.ext.js"></script>
+            <script type="text/javascript" src="../js/scripts/jQuery/jquery.validate.ext.js"></script>
+            <!-- jquery ui -->
+            <script type="text/javascript" src="../js/scripts/jQuery/plugins/jquery-ui/jquery.ui.min.js"></script>
+            <script type="text/javascript">
+                $(function() {
+                    fedPris.profile();
+
+                    $("form").data("validator").settings.submitHandler = function (form) {
+                        fedPris.popWinShow({
+                                id: ".pop_loading",
+                                maskOut: true,
+                                maskIn: true
+                            });
+                        form.submit();
+                    };
+                    
+                    // submit form and clean default value
+                    $('.js_sbmt_btn').click(function() {
+                        fedPris.clearIptDefaultVal();
+                    });
+                });
+            </script>
+        </div>
+    </body>
+
+</html>

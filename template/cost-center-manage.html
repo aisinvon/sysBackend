@@ -1,0 +1,208 @@
+<!-- main content -->
+<div class="main wrap clearfix">
+    <h3 class="pg_tit">Cost Center Management</h3>
+    <!-- angularWrap -->
+    <div id="angularWrap" data-source="../js/json/listStaff.json">
+        <!-- <div id="angularWrap"  data-prefix="SystemMenuWebAPIJSon/GetCostCenterManagementBySearch" data-source="SystemMenuWebAPIJSon/GetCostCenterManagementBySearch?from=&to=&costcenter=&costcentername=&devision="> -->
+
+        <!-- mod_filter -->
+        <div class="mod_filter filter_staff clearfix">
+            <div class="clearfix">
+                <div class="item">
+                    <label class="label" for="cccode">Cost Center:</label>
+                    <select ng-model="search.costcenter" ng-init="search.costcenter=''" name="costcenter" id="cccode">
+                        <option value=""></option>
+                        <option ng-repeat="cc in costCenters" value="{{cc.costCenter}}">{{cc.costCenter}}</option>
+                    </select>
+                </div>
+                <div class="item">
+                    <label class="label" for="costcentername">Cost Center Name:</label>
+                    <select ng-model="search.costcentername" ng-init="search.costcentername=''" name="costcentername" id="costcentername">
+                        <option value=""></option>
+                        <option ng-repeat="cc in costCenters" value="{{cc.costCenterName}}">{{cc.costCenterName}}</option>
+                    </select>
+                </div>
+                <div class="item">
+                    <label class="label" for="devision">Division:</label>
+                    <select ng-model="search.devision" ng-init="search.devision=''" name="devision" id="devision">
+                        <option value=""></option>
+                        <option ng-repeat="itUnit in itUnits" value="{{itUnit.name}}">{{itUnit.name}}</option>
+                    </select>
+                </div>
+                <div class="item item_short">
+                    <label class="label" for="from">Date From:</label>
+                    <input datepicker ng-model="search.from" ng-init="search.from=''" name="from" type="text" id="from" class="text" />&nbsp;To:
+                    <input datepicker ng-model="search.to" ng-init="search.to=''" name="to" type="text" id="to" class="text" />
+                </div>
+            </div>
+            <p class="tr">
+                <button ng-click="itemSearch(search)" type="button" class="js_showPopBtn auto_btn prim">Search</button>
+            </p>
+        </div>
+        <!-- / mod_filter -->
+
+        <p class="mt tr">
+            <a ng-click="showMaskFun()" class="js_showPopBtn act_add ml" href="javascript:;"><i class="addNewIco"></i>Add New</a>   
+        </p>
+
+        <!-- page_nav -->
+        <div class="page_nav mt clearfix">
+            <ul class="fr">
+                <li ng-class="{disabled: currentPage == 0}" ng-click="prevPage()">
+                    <a href="javascript:;">« Prev</a>
+                </li>
+                <li ng-click="setPage(10)">
+                    <span>{{currentPage+1}}/{{numberOfPages()}}</span>
+                </li>
+                <li ng-class="{disabled: currentPage >= numberOfPages() - 1}" ng-click="nextPage()">
+                    <a href="javascript:;">Next »</a>
+                </li>
+            </ul>
+        </div>
+        <!-- / page_nav -->
+
+        <table class="table_admin table_menu">
+            <thead>
+                <tr>
+                    <th class="sortable" ng-click="orderByField='iTUnit'; reverseSort = !reverseSort">
+                        IT Unit
+                        <span ng-show="orderByField == 'iTUnit'">
+                            <b ng-show="reverseSort">↑</b>
+                            <b ng-show="!reverseSort">↓</b>
+                        </span>
+                    </th>
+                    <th class="sortable" ng-click="orderByField='costCenter'; reverseSort = !reverseSort">
+                        Cost Center
+                        <span ng-show="orderByField == 'costCenter'">
+                            <b ng-show="reverseSort">↑</b>
+                            <b ng-show="!reverseSort">↓</b>
+                        </span>
+                    </th>
+                    <th>Cost Center Name</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="tip_loading">
+                    <td colspan="4">
+                        <img src="../images/pris_loading.gif" alt="loading" />
+                    </td>
+                </tr>
+                <tr ng-repeat="item in items | orderBy:orderByField:!reverseSort | startFrom: currentPage*numLimit | limitTo: numLimit " ng-cloak>
+                    <td>{{item.iTUnit}}</td>
+                    <td>{{item.costCenter}}</td>
+                    <td>{{item.costCenterName}}</td>
+                    <td>
+                        <span class="js_showPopBtn" ng-click="editItem(item, 'costCenter')"><i class="penIco"></i></span>
+                        <button class="js_showPopBtn del binIco" type="button" ng-click="removeItem(item, 'costCenter')"><i></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+        <!-- page_nav -->
+        <div class="page_nav clearfix">
+            <ul class="fr">
+                <li ng-class="{disabled: currentPage == 0}" ng-click="prevPage()">
+                    <a href="javascript:;">« Prev</a>
+                </li>
+                <li ng-click="setPage(10)">
+                    <span>{{currentPage+1}}/{{numberOfPages()}}</span>
+                </li>
+                <li ng-class="{disabled: currentPage >= numberOfPages() - 1}" ng-click="nextPage()">
+                    <a href="javascript:;">Next »</a>
+                </li>
+            </ul>
+        </div>
+        <!-- / page_nav -->
+
+    </div>
+    <!-- / angularWrap -->
+</div>
+<!-- / main content -->
+
+
+<!--mask of pop up window-->
+<div id="pop_win_mask" class="pop_win_mask" ></div>
+<!-- pop up window -->
+<div id="pop_win" class="pop_win">                
+    <div class="pop_win_in_mask"></div>
+    <!--loading image, class 'none'=" display:none"-->
+    <div id="pop_loading" class="pop_win_in center pop_loading">
+        <img src="../images/pris_loading.gif" alt="loading" />
+    </div>
+    <div id="pop_dialog" class="pop_win_in center ">
+        <p class="tc mb">Are you sure to delete?</p>
+        <button ng-click="removeNow()" class="auto_btn prim" type="button">YES</button>
+        <button class="auto_btn pop_win_close" type="button">&nbsp;NO&nbsp;</button>
+    </div>
+    <div id="pop_win_edit" class="pop_win_in pop_win_blue pop_win_edit pop_costcenter" ng-show="popUpStatus">
+        <h4>Creat Responsibility Center</h4>
+
+        <form name="menuForm" action="" ng-submit="submitForm(menuForm.$valid, newItem, 'costCenter')" novalidate>
+            <div class="mod_input">
+
+                <div class="item clearfix">
+                    <label for="costCenter" class="label"><b>*</b>Cost Center Code:</label>
+                    <input ng-model="newItem.costCenter" type="text" class="text" id="costCenter" ng-validator required name="costCenter" placeholder="Cost Center Code should be number" />
+                    <p class="valid_eror" ng-show="menuForm.costCenter.$error">Required.</p>
+                </div>
+
+                <div class="item clearfix">
+                    <label for="costCenterName" class="label"><b>*</b>Cost Center Name:</label>
+                    <input ng-model="newItem.costCenterName" type="text" class="text" id="costCenterName" ng-validator required name="costCenterName" />
+                    <p class="valid_eror" ng-show="menuForm.costCenterName.$error">Required.</p>
+                </div>
+
+                <div class="item clearfix">
+                    <label for="businessManager" class="label">Business Manager:</label>
+                    <input ng-model="newItem.businessManager" type="text" class="text" id="businessManager" name="businessManager" placeholder="ID should be number, use comma to seperate multiple ID" />
+                    <!-- <p class="valid_eror" ng-show="menuForm.businessManager.$error">Required.</p> -->
+                </div>
+
+                <div class="item clearfix">
+                    <label for="approver" class="label">Approver:</label>
+                    <input ng-model="newItem.approver" type="text" class="text" id="approver" name="approver" placeholder="ID should be number, use comma to seperate multiple ID"/>
+                    <!-- <p class="valid_eror" ng-show="menuForm.approver.$error">Required.</p> -->
+                </div>
+
+                <div class="item clearfix">
+                    <label for="divisionalController" class="label">Divisional Controller:</label>
+                    <input ng-model="newItem.divisionalController" type="text" class="text" id="divisionalController" name="divisionalController" placeholder="ID should be number, use comma to seperate multiple ID" />
+                    <!-- <p class="valid_eror" ng-show="menuForm.divisionalController.$error">Required.</p> -->
+                </div>
+
+                <div class="item clearfix">
+                    <label for="resourceChangeControllerApprover" class="label">Resource Change Controller Approver:</label>
+                    <input ng-model="newItem.resourceChangeControllerApprover" type="text" class="text" id="resourceChangeControllerApprover" name="resourceChangeControllerApprover" placeholder="ID should be number, use comma to seperate multiple ID" />
+                    <!-- <p class="valid_eror" ng-show="menuForm.resourceChangeControllerApprover.$error">Required.</p> -->
+                </div>
+
+                <div class="item clearfix">
+                    <label for="iTUnitId" class="label"><b>*</b>IT Unit:</label>
+                    <select ng-model="newItem.iTUnitId" name="iTUnitId" id="iTUnitId" ng-validator required>
+                        <option value=""></option>
+                        <option ng-repeat="itUnit in itUnits" value="{{itUnit.id}}">{{itUnit.name}}</option>
+                    </select>
+                    <p class="valid_eror" ng-show="menuForm.iTUnitId.$error">Required.</p>
+                </div>
+
+                <div class="item clearfix">
+                    <label class="label">&nbsp;</label>
+                    <input ng-model="newItem.usedForBudget" type="checkbox" class="checkbox" id="usedForBudget" name="usedForBudget" ng-init="newItem.usedForBudget=false" />
+                    <label for="usedForBudget">Used for Budget</label>
+                </div>
+
+                <p class="tr mt">
+                    <button class="auto_c_btn prim sbmt" type="submit">Save</button>
+                </p>
+            </div>
+        </form>
+
+        <i class="closeIco pop_win_close"></i>
+
+    </div>
+</div>
+<!-- / pop up window -->

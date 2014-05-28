@@ -1,0 +1,118 @@
+	<!-- main content -->
+	<div class="main wrap clearfix">
+		<h3 class="pg_tit">Staff Management</h3>
+		<!-- angularWrap -->
+		<div id="angularWrap" data-source="../js/json/listStaff.json">
+		<!-- <div id="angularWrap" data-prefix="SystemMenuWebAPIJSon/GetUserStatus" data-source="SystemMenuWebAPIJSon/GetUserStatus?date="> -->
+			
+			<ul class="tab_tit clearfix">
+			    <li><a href="#staff-list">Staff List in MIS<i></i></a></li>
+			    <li class="on"><a href="#changed-list">Changed List<i></i></a></li>
+			    <li><a href="#import-staff">Import Staff<i></i></a></li>
+			    <li><a href="#add-new-staff">Add New Staff<i></i></a></li>
+			    <li><a href="#change-staff-status">Change Staff Status<i></i></a></li>
+			</ul>
+
+			<!-- mod_filter -->
+			<div class="mod_filter filter_staff clearfix">
+
+				<p class="tab_pLnk tr">
+					<a href="#changed-list">CC Changed List</a> | 
+					<a href="#manager-changed-list">Manager Changed List</a> | 
+					<a class="on" href="#Status-changed-list">Status Changed List</a>
+				</p>
+
+                <div class="clearfix">
+                    <p class="item">
+                        <label class="label" for="only_month">Date:</label>
+                        <input monthpicker ng-model="search.date" ng-init="search.date=''" type="text" id="only_month" class="text" />
+                    </p>
+                </div>
+                
+                <p class="tr">
+                	<button ng-click="itemSearch(search)" type="button" class="js_showPopBtn auto_btn prim">Search</button>
+                </p>
+			</div>
+			<!-- / mod_filter -->
+
+			<!-- page_nav -->
+			<div class="page_nav clearfix">
+			    <ul class="fr">
+			        <li ng-class="{disabled: currentPage == 0}" ng-click="prevPage()">
+			            <a href="javascript:;">« Prev</a>
+			        </li>
+			        <li ng-click="setPage(10)"><span>{{currentPage+1}}/{{numberOfPages()}}</span></li>
+			        <li ng-class="{disabled: currentPage >= numberOfPages() - 1}" ng-click="nextPage()">
+			            <a href="javascript:;">Next »</a>
+			        </li>
+			    </ul>
+			</div>
+			<!-- / page_nav -->
+
+			<table class="table_admin table_menu mt">
+				<thead>
+					<tr>
+						<th class="sortable" ng-click="orderByField='lanId'; reverseSort = !reverseSort">
+	                        Lan ID
+	                        <span ng-show="orderByField == 'lanId'">
+	                            <b ng-show="reverseSort">↑</b>
+	                            <b ng-show="!reverseSort">↓</b>
+	                        </span>
+	                    </th>
+						<th class="sortable" ng-click="orderByField='name'; reverseSort = !reverseSort">
+	                        Name
+	                        <span ng-show="orderByField == 'name'">
+	                            <b ng-show="reverseSort">↑</b>
+	                            <b ng-show="!reverseSort">↓</b>
+	                        </span>
+	                    </th>
+						<th>Previous Status</th>
+						<th>Changed Status</th>
+						<th>Update Time</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="tip_loading">
+					    <td colspan="5">
+					    	<img src="../images/pris_loading.gif" alt="loading" />
+					    </td>
+					</tr>
+					<tr ng-repeat="item in items | orderBy:orderByField:!reverseSort | startFrom: currentPage*numLimit |  limitTo: numLimit" ng-cloak>
+						<td>{{item.lanId}}</td>
+						<td>{{item.name}}</td>
+						<td>{{item.previousStatus}}</td>
+						<td>{{item.changedStatus}}</td>
+						<td>{{item.updateTime}}</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<!-- page_nav -->
+			<div class="page_nav clearfix">
+			    <ul class="fr">
+			        <li ng-class="{disabled: currentPage == 0}" ng-click="prevPage()">
+			            <a href="javascript:;">« Prev</a>
+			        </li>
+			        <li ng-click="setPage(10)"><span>{{currentPage+1}}/{{numberOfPages()}}</span></li>
+			        <li ng-class="{disabled: currentPage >= numberOfPages() - 1}" ng-click="nextPage()">
+			            <a href="javascript:;">Next »</a>
+			        </li>
+			    </ul>
+			</div>
+			<!-- / page_nav -->
+		</div>
+		<!-- / angularWrap -->
+	</div>
+	<!-- / main content -->
+
+	<!--mask of pop up window-->
+	<div id="pop_win_mask" class="pop_win_mask" ></div>
+	<!-- pop up window -->
+	<div id="pop_win" class="pop_win">                
+	    <div class="pop_win_in_mask"></div>
+	    <!--loading image, class 'none'=" display:none"-->
+	    <div id="pop_loading" class="pop_win_in center pop_loading">
+	        <img src="../images/pris_loading.gif" alt="loading" />
+	    </div>
+	</div>
+	<!-- / pop up window -->

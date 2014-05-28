@@ -1,0 +1,149 @@
+<!-- main content -->
+<div class="main wrap clearfix">
+    <h3 class="pg_tit">Category Item</h3>
+    <!-- angularWrap -->
+    <div id="angularWrap" data-source="../js/json/listStaff.json">
+   <!-- <div id="angularWrap" data-prefix="DataItem/GetDataItemList" data-source="DataItem/GetDataItemList?item=&categoryid="> -->
+
+        <!-- mod_filter -->
+        <div class="mod_filter filter_staff clearfix">
+            <div class="clearfix">
+                <div class="item">
+                    <label class="label" for="item">Item:</label>
+                    <input ng-model="search.item" ng-init="search.item=''" type="text" class="text" id="item" name="item" />
+                </div>
+                <div class="item">
+                    <label class="label" for="itemCate">Category:</label>
+                    <select ng-model="search.categoryid" ng-init="search.categoryid=''" name="categoryid" id="itemCate">
+                        <option value=""></option>
+                        <option ng-repeat="itemCate in itemCates" value="{{itemCate.id}}">{{itemCate.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <p class="tr">
+                <button ng-click="itemSearch(search)" type="button" class="js_showPopBtn auto_btn prim">Search</button>
+            </p>
+        </div>
+        <!-- / mod_filter -->
+
+        <p class="mt tr">
+            <a ng-click="showMaskFun(newItem)" class="js_showPopBtn act_add ml" href="javascript:;"><i class="addNewIco"></i>Add New</a>   
+        </p>
+
+        <!-- page_nav -->
+        <div class="page_nav mt clearfix">
+            <ul class="fr">
+                <li ng-class="{disabled: currentPage == 0}" ng-click="prevPage()">
+                    <a href="javascript:;">« Prev</a>
+                </li>
+                <li ng-click="setPage(10)">
+                    <span>{{currentPage+1}}/{{numberOfPages()}}</span>
+                </li>
+                <li ng-class="{disabled: currentPage >= numberOfPages() - 1}" ng-click="nextPage()">
+                    <a href="javascript:;">Next »</a>
+                </li>
+            </ul>
+        </div>
+        <!-- / page_nav -->
+
+        <table class="table_admin table_menu">
+            <thead>
+                <tr>
+                    <th>Item Name</th>
+                    <th>Item Code</th>
+                    <th>Category</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="tip_loading">
+                    <td colspan="4">
+                        <img src="../images/pris_loading.gif" alt="loading" />
+                    </td>
+                </tr>
+                <tr ng-repeat="item in items | startFrom: currentPage*numLimit |  limitTo: numLimit" ng-cloak>
+                    <td>{{item.itemName}}</td>
+                    <td>{{item.itemCode}}</td>
+                    <td>{{item.category}}</td>
+                    <td>
+                        <span class="js_showPopBtn" ng-click="editItem(item, 'category')"><i class="penIco"></i></span>
+                        <button class="js_showPopBtn del binIco" type="button" ng-click="removeItem(item, 'category')"><i></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- page_nav -->
+        <div class="page_nav clearfix">
+            <ul class="fr">
+                <li ng-class="{disabled: currentPage == 0}" ng-click="prevPage()">
+                    <a href="javascript:;">« Prev</a>
+                </li>
+                <li ng-click="setPage(10)">
+                    <span>{{currentPage+1}}/{{numberOfPages()}}</span>
+                </li>
+                <li ng-class="{disabled: currentPage >= numberOfPages() - 1}" ng-click="nextPage()">
+                    <a href="javascript:;">Next »</a>
+                </li>
+            </ul>
+        </div>
+        <!-- / page_nav -->
+
+    </div>
+    <!-- / angularWrap -->
+</div>
+<!-- / main content -->
+
+
+<!--mask of pop up window-->
+<div id="pop_win_mask" class="pop_win_mask" ></div>
+<!-- pop up window -->
+<div id="pop_win" class="pop_win">                
+    <div class="pop_win_in_mask"></div>
+    <!--loading image, class 'none'=" display:none"-->
+    <div id="pop_loading" class="pop_win_in center pop_loading">
+        <img src="../images/pris_loading.gif" alt="loading" />
+    </div>
+    <div id="pop_dialog" class="pop_win_in center ">
+        <p class="tc mb">Are you sure to delete?</p>
+        <button ng-click="removeNow()" class="auto_btn prim" type="button">YES</button>
+        <button class="auto_btn pop_win_close" type="button">&nbsp;NO&nbsp;</button>
+    </div>
+    <div id="pop_win_edit" class="pop_win_in pop_win_blue pop_win_edit" ng-show="popUpStatus">
+        <h4>Creat Responsibility Center</h4>
+
+        <form name="menuForm" action="" ng-submit="submitForm(menuForm.$valid, newItem, 'category')" novalidate>
+            <div class="mod_input">
+
+                <div class="item clearfix">
+                    <label for="itemName" class="label"><b>*</b>Item Name:</label>
+                    <input ng-model="newItem.itemName" type="text" class="text" id="itemName" ng-validator required name="itemName" />
+                    <p class="valid_eror" ng-show="menuForm.itemName.$error">Required.</p>
+                </div>
+
+                <!-- <div class="item clearfix">
+                    <label for="itemCode" class="label"><b>*</b>Item Code:</label>
+                    <input ng-model="newItem.itemCode" type="text" class="text" id="itemCode" ng-validator required name="itemCode" placeholder="Item Code should be number" />
+                    <p class="valid_eror" ng-show="menuForm.itemCode.$error">Required.</p>
+                </div> -->
+
+                <div class="item clearfix">
+                    <label for="itemCate" class="label"><b>*</b>Category:</label>
+                    <select ng-model="newItem.categoryId" name="categoryId" id="itemCate" ng-validator required>
+                        <option value=""></option>
+                        <option ng-repeat="itemCate in itemCates" value="{{itemCate.id}}">{{itemCate.name}}</option>
+                    </select>
+                    <p class="valid_eror" ng-show="menuForm.categoryId.$error">Required.</p>
+                </div>
+
+                <p class="tr mt">
+                    <button class="auto_c_btn prim sbmt" type="submit">Save</button>
+                </p>
+            </div>
+        </form>
+
+        <i class="closeIco pop_win_close"></i>
+
+    </div>
+</div>
+<!-- / pop up window -->

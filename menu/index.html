@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>MIS Admin: Set Menu of Role</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" type="text/css" href="../css/base.css" />
+    <link rel="stylesheet" type="text/css" href="../css/pris.css" />
+    <link rel="stylesheet" type="text/css" href="../css/pris.admin.css" />
+    <!-- plugin zTree -->
+    <link rel="stylesheet" type="text/css" href="../css/plugins/zTree/zTreeStyle.css" />
+</head>
+<body>
+    <!-- pageWrapper -->
+    <div class="pageWrapper">
+
+        <!-- header -->
+        <!-- top -->
+        <div class="top clearfix">
+            <div class="wrap">
+                <a class="logo" href="">
+                    <img src="../images/logo.png" alt="STATE STREET" />
+                </a>
+                <a href="">
+                    <img class="slogan" src="../images/slogan.png" alt="State Street Hangzhou: Management Information System (MIS)" />
+                </a>
+            </div>
+        </div>
+        <!-- / top -->
+
+        <!-- nav -->
+        <div class="nav">
+            <div class="wrap">
+                <ul class="clearfix">
+                    <!-- add class on, then that nav will be highlighted -->
+                    <li class="nav_home"><a href="../../"><i class="navIco"></i>Homepage<i class="downArowIco"></i></a></li>
+                    <li class="nav_setting on">
+                        <a href="../index"><i class="navIco"></i>System Menu<i class="downArowIco"></i></a>
+                        <!-- second level menu -->
+                        <ul>
+                            <li class="on">
+                               <a href="../menu/index.html#menu">Set Menu Access</a>
+                            </li>
+                            <li>
+                               <a href="../role/index.html#role">Set User Role</a>
+                            </li>
+                            <li>
+                               <a href="../index/index.html#staff-list">Staff Management</a>
+                            </li>
+                            <li>
+                               <a href="../index/index.html#cost-center">Cost Center Management</a>
+                            </li>
+                            <li>
+                               <a href="../index/index.html#team">Team Management</a>
+                            </li>
+                            <li>
+                               <a href="../index/index.html#category">Category Item</a>
+                            </li>
+                            <li>
+                               <a href="../index/index.html#meeting-room">Meeting Room Management</a>
+                            </li>
+                        </ul>
+                        <!-- / second level menu -->
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- / nav -->
+        <!-- / header -->
+
+        <!-- main content -->
+        <div class="main wrap clearfix">
+            <!-- <input type="hidden" id="api_prefix" value="/Test/api/" /> -->
+            <input type="hidden" id="api_prefix" value="" />
+            <input type="hidden" id="post_sbmtMenu" value="SetMenuAccess/Submit" />
+            <input type="hidden" id="postPrefix_add" value="SetMenuAccess/AddNewMenuAndReturnId?menuName=&parentMenuId=" />
+            <input type="hidden" id="postPrefix_del" value="SetMenuAccess/DeMenu?menuId=" />
+            <!-- <input type="hidden" id="dataSource_staff" value="SystemMenuWebAPIJSon/GetUserForMenuWithCheck?menuid=" /> -->
+            <input type="hidden" id="dataSource_staff" value="../js/json/teamLeader.json" />
+
+            <h3 class="pg_tit">Set Menu Access</h3>
+
+            <div class="mod_adm">
+
+                <!-- mod_adm_r -->
+                <div class="mod_adm_r">
+                    <div ng-view></div>
+                </div>
+                <!-- / mod_adm_r -->
+
+                <!-- mod_adm_l -->
+                <div class="mod_adm_l">
+                    <!-- <div class="tree_menuPriv"> -->
+                    <!-- <ul id="tree_menuPriv" class="ztree" data-source="/Test/api/SystemMenuWebAPIJSon/GetMuenTree"></ul> -->
+                    <ul id="tree_menuPriv" class="ztree" data-source="../js/json/treeMenu.json"></ul>
+                    <!-- </div> -->
+                </div>
+                <!-- / mod_adm_l -->
+
+            </div>
+
+        </div>
+        <!-- / main content -->
+
+        <!-- footer -->
+        <div class="footer clearfix">
+            <div class="wrap">
+                <a href="homepage.html" class="logo">STATE STREET</a>
+                <ul>
+                    <li><a href="">SSTC</a>
+                    </li>
+                    <li><a href="">Atrack</a>
+                    </li>
+                    <li><a href="">SSHOME</a>
+                    </li>
+                    <li><a href="">LMS</a>
+                    </li>
+                    <li><a href="">Support</a>
+                    </li>
+                    <li><a href="">eBusiness</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- / footer -->
+
+        <!--mask of pop up window-->
+        <div id="pop_win_mask" class="pop_win_mask"></div>
+        <!-- pop up window -->
+        <div id="pop_win" class="pop_win">                
+            <div class="pop_win_in_mask"></div>
+            <!--loading image, class 'none'=" display:none"-->
+            <div id="pop_loading" class="pop_win_in center pop_loading">
+                <img src="../images/pris_loading.gif" alt="loading" />
+            </div>
+        </div>
+        <!-- / pop up window -->
+
+        <script type="text/javascript" src="../js/scripts/jQuery/jQuery.1.7.2.min.js"></script>
+        <script type="text/javascript" src="../js/scripts/jQuery/pris.admin.js"></script>
+        <!-- plugin zTree -->
+        <script type="text/javascript" src="../js/scripts/jQuery/plugins/zTree/jquery.ztree.all.3.5.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                fedPris.setMenuRole();
+            });
+        </script>
+        <script data-main="../js/main.js" src="../js/scripts/requirejs/require.js"></script>
+    </div>
+    <!-- / pageWrapper -->
+</body>
+
+</html>
+
+
+

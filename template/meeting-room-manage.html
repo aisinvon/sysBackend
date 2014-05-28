@@ -1,0 +1,313 @@
+<!-- main content -->
+<div class="main wrap clearfix">
+    <h3 class="pg_tit">Meeting Room Management</h3>
+    <!-- angularWrap -->
+    <div id="angularWrap" data-source="../js/json/listStaff.json">
+    <!-- <div id="angularWrap"  data-prefix="SystemMenuWebAPIJSon/GetMeetingRoomBySearch" data-source="SystemMenuWebAPIJSon/GetMeetingRoomBySearch?location=&building=&floor=&meetingRoom=&open=&computer=&voIP=&video="> -->
+
+        <!-- mod_filter -->
+        <div class="mod_filter filter_staff clearfix">
+            <div class="clearfix">
+                <div class="item">
+                    <label class="label" for="location">Location:</label>
+                    <select ng-model="search.location" ng-init="search.location=''" name="location" id="location">
+                        <option value=""></option>
+                        <option value="Tang">Tang</option>
+                        <option value="Maxia">Maxia</option>
+                    </select>
+                </div>
+                <div class="item">
+                    <label class="label" for="building">Building:</label>
+                    <select ng-model="search.building" ng-init="search.building=''" name="building" id="building">
+                        <option value=""></option>
+                        <option value="TT-2F">TT-2F</option>
+                        <option value="TT-3F">TT-3F</option>
+                        <option value="TT-4F">TT-4F</option>
+                        <option value="TT-5F">TT-5F</option>
+                        <option value="TT-6F">TT-6F</option>
+                        <option value="J2">Insigma J2</option>
+                        <option value="J3">Insigma J3</option>
+                    </select>
+                </div>
+                <div class="item none">
+                    <label class="label" for="floor">Meeting Room:</label>
+                    <select ng-model="search.floor" ng-init="search.floor=''" name="floor" id="floor">
+                        <option value=""></option>
+                        <option value="2F">2F</option>
+                        <option value="3F">3F</option>
+                        <option value="4F">4F</option>
+                        <option value="5F">5F</option>
+                        <option value="6F">6F</option>
+                    </select>
+                </div>
+                <div class="item">
+                    <label class="label" for="meetingRoom">Meeting Room:</label>
+                    <input ng-model="search.meetingRoom" ng-init="search.meetingRoom=''" type="text" class="text" id="meetingRoom" name="meetingRoom" />
+                </div>
+                <div class="item">
+                    <label class="label" for="open">Status:</label>
+                    <select ng-model="search.open" ng-init="search.open=''" name="open" id="open">
+                        <option value=""></option>
+                        <option value="true">Open</option>
+                        <option value="false">Closed</option>
+                    </select>
+                </div>
+                <div class="item clearfix">
+                    <label class="label" for="computer">Computer:</label>
+                    <!-- <input id="computer" type="checkbox" ng-model="search.computer" ng-init="search.computer=''" /> -->
+                    <select ng-model="search.computer" ng-init="search.computer=''" name="computer" id="computer">
+                        <option value=""></option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+                <div class="item clearfix">
+                    <label class="label" for="voIP">VoIP:</label>
+                    <!-- <input id="voIP" type="checkbox" ng-model="search.voIP" ng-init="search.voIP=''" /> -->
+                    <select ng-model="search.voIP" ng-init="search.voIP=''" name="voIP" id="voIP">
+                        <option value=""></option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+                <div class="item clearfix">
+                    <label class="label" for="video">Video:</label>
+                    <!-- <input id="video" type="checkbox" ng-model="search.video" ng-init="search.video=''" /> -->
+                    <select ng-model="search.video" ng-init="search.video=''" name="video" id="video">
+                        <option value=""></option>
+                        <option value="true">Yes</option>
+                        <option value="false">No</option>
+                    </select>
+                </div>
+            </div>
+            <p class="tr">
+                <button ng-click="itemSearch(search)" type="button" class="js_showPopBtn auto_btn prim">Search</button>
+            </p>
+        </div>
+        <!-- / mod_filter -->
+
+        <p class="mt tr">
+            <a ng-click="showMaskFun(newItem)" class="js_showPopBtn act_add ml" href="javascript:;"><i class="addNewIco"></i>Add New</a>   
+        </p>
+
+        <!-- page_nav -->
+        <div class="page_nav mt clearfix">
+            <ul class="fr">
+                <li ng-class="{disabled: currentPage == 0}" ng-click="prevPage()">
+                    <a href="javascript:;">« Prev</a>
+                </li>
+                <li ng-click="setPage(10)">
+                    <span>{{currentPage+1}}/{{numberOfPages()}}</span>
+                </li>
+                <li ng-class="{disabled: currentPage >= numberOfPages() - 1}" ng-click="nextPage()">
+                    <a href="javascript:;">Next »</a>
+                </li>
+            </ul>
+        </div>
+        <!-- / page_nav -->
+
+        <table class="table_admin table_menu">
+            <thead>
+                <tr>
+                    <th>Location</th>
+                    <th>Building</th>
+                    <th>Floor</th>
+                    <th class="sortable" ng-click="orderByField='meetingRoom'; reverseSort = !reverseSort">
+                        Meeting Room
+                        <span ng-show="orderByField == 'meetingRoom'">
+                            <b ng-show="reverseSort">↑</b>
+                            <b ng-show="!reverseSort">↓</b>
+                        </span>
+                    </th>
+                    <th>Capability</th>
+                    <th>Computer</th>
+                    <th>VoIP</th>
+                    <th>Video</th>
+                    <th>Equipment</th>
+                    <th>Open</th>
+                    <th class="sortable" ng-click="orderByField='sortOrder'; reverseSort = !reverseSort">
+                        Sort Order
+                        <span ng-show="orderByField == 'sortOrder'">
+                            <b ng-show="reverseSort">↑</b>
+                            <b ng-show="!reverseSort">↓</b>
+                        </span>
+                    </th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="tip_loading">
+                    <td colspan="12">
+                        <img src="../images/pris_loading.gif" alt="loading" />
+                    </td>
+                </tr>
+                <tr ng-repeat="item in items | orderBy:orderByField:!reverseSort | startFrom: currentPage*numLimit |  limitTo: numLimit" ng-cloak>
+                    <td>{{item.location}}</td>
+                    <td>{{item.building}}</td>
+                    <td>{{item.floor}}</td>
+                    <td>{{item.meetingRoom}}</td>
+                    <td>{{item.capability}}</td>
+                    <td>
+                        <input type="checkbox" ng-model="item.computer" ng-checked="{{item.computer}}" />
+                    </td>
+                    <td>
+                        <input type="checkbox" ng-model="item.voIP" ng-checked="{{item.voIP}}" />
+                    </td>
+                    <td>
+                        <input type="checkbox" ng-model="item.video" ng-checked="{{item.video}}" />
+                    </td>
+                    <td>
+                        <input type="checkbox" ng-model="item.equipment" ng-checked="{{item.equipment}}" />
+                    </td>
+                    <td>
+                        <input type="checkbox" ng-model="item.open" ng-checked="{{item.open}}" />
+                    </td>
+                    <td>
+                        {{item.sortOrder}}
+                    </td>
+                    <td>
+                        <span class="js_showPopBtn" ng-click="editItem(item, 'mtRoom')"><i class="penIco"></i></span>
+                        <button class="js_showPopBtn del binIco" type="button" ng-click="removeItem(item, 'mtRoom')"><i></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+<!--         <p class="mt tr">
+            <button ng-click="sbmtChange()" type="submit" class="js_showPopBtn auto_c_btn prim sbmt">Save</button>
+        </p> -->
+
+        <!-- page_nav -->
+        <div class="page_nav clearfix">
+            <ul class="fr">
+                <li ng-class="{disabled: currentPage == 0}" ng-click="prevPage()">
+                    <a href="javascript:;">« Prev</a>
+                </li>
+                <li ng-click="setPage(10)">
+                    <span>{{currentPage+1}}/{{numberOfPages()}}</span>
+                </li>
+                <li ng-class="{disabled: currentPage >= numberOfPages() - 1}" ng-click="nextPage()">
+                    <a href="javascript:;">Next »</a>
+                </li>
+            </ul>
+        </div>
+        <!-- / page_nav -->
+
+    </div>
+    <!-- / angularWrap -->
+</div>
+<!-- / main content -->
+
+
+<!--mask of pop up window-->
+<div id="pop_win_mask" class="pop_win_mask" ></div>
+<!-- pop up window -->
+<div id="pop_win" class="pop_win">                
+    <div class="pop_win_in_mask"></div>
+    <!--loading image, class 'none'=" display:none"-->
+    <div id="pop_loading" class="pop_win_in center pop_loading">
+        <img src="../images/pris_loading.gif" alt="loading" />
+    </div>
+    <div id="pop_dialog" class="pop_win_in center ">
+        <p class="tc mb">Are you sure to delete?</p>
+        <button ng-click="removeNow()" class="auto_btn prim" type="button">YES</button>
+        <button class="auto_btn pop_win_close" type="button">&nbsp;NO&nbsp;</button>
+    </div>
+    <div id="pop_win_edit" class="pop_win_in pop_win_blue pop_win_edit pop_costcenter" ng-show="popUpStatus">
+        <h4>Creat Responsibility Center</h4>
+
+        <form name="menuForm" action="" ng-submit="submitForm(menuForm.$valid, newItem, 'mtRoom')" novalidate>
+            <div class="mod_input">
+
+                <div class="item clearfix">
+                    <label for="location" class="label"><b>*</b>Location:</label>
+                    <select ng-model="newItem.location" name="location" id="location" ng-validator required>
+                        <option value=""></option>
+                        <option value="Tang">Tang</option>
+                        <option value="Maxia">Maxia</option>
+                    </select>
+                    <p class="valid_eror" ng-show="menuForm.location.$error">Required.</p>
+                </div>
+
+                <div class="item clearfix">
+                    <label for="building" class="label"><b>*</b>Building:</label>
+                    <select ng-model="newItem.building" name="building" id="building" ng-validator required>
+                        <option value=""></option>
+                        <option value="Maxia-2F">Maxia-2F</option>
+                        <option value="Maxia-3F">Maxia-3F</option>
+                        <option value="Maxia-4F">Maxia-4F</option>
+                        <option value="Maxia-5F">Maxia-5F</option>
+                        <option value="Maxia-6F">Maxia-6F</option>
+                        <option value="Tang-2">Tang-2</option>
+                        <option value="Tang-3">Tang-3</option>
+                    </select>
+                    <p class="valid_eror" ng-show="menuForm.building.$error">Required.</p>
+                </div>
+
+                <div class="item clearfix">
+                    <label for="floor" class="label"><b>*</b>Floor:</label>
+                    <select ng-model="newItem.floor" name="floor" id="floor" ng-validator required>
+                        <option value=""></option>
+                        <option value="2F">2F</option>
+                        <option value="3F">3F</option>
+                        <option value="4F">4F</option>
+                        <option value="5F">5F</option>
+                        <option value="6F">6F</option>
+                    </select>
+                    <p class="valid_eror" ng-show="menuForm.floor.$error">Required.</p>
+                </div>
+
+                <div class="item clearfix">
+                    <label for="meetingRoom" class="label"><b>*</b>Meeting Room:</label>
+                    <input ng-model="newItem.meetingRoom" type="text" class="text" id="meetingRoom" ng-validator required name="meetingRoom" />
+                    <p class="valid_eror" ng-show="menuForm.meetingRoom.$error">Required.</p>
+                </div>
+
+                <div class="item clearfix">
+                    <label for="capability" class="label"><b>*</b>Capability:</label>
+                    <input ng-model="newItem.capability" type="text" class="text" id="capability" ng-validator required name="capability" placeholder="Capability should be number" />
+                    <p class="valid_eror" ng-show="menuForm.capability.$error">Required.</p>
+                </div>
+
+                <div class="item clearfix">
+                    <label for="computer2" class="label">Computer:</label>
+                    <input id="computer2" type="checkbox" ng-model="newItem.computer" ng-checked="{{newItem.computer}}" ng-init="newItem.computer=false" />
+                </div>
+
+                <div class="item clearfix">
+                    <label for="voIP2" class="label">voIP:</label>
+                    <input id="voIP2" type="checkbox" ng-model="newItem.voIP" ng-checked="{{newItem.voIP}}" ng-init="newItem.voIP=false" />
+                </div>
+
+                <div class="item clearfix">
+                    <label for="video2" class="label">Video:</label>
+                    <input id="video2" type="checkbox" ng-model="newItem.video" ng-checked="{{newItem.video}}" ng-init="newItem.video=false" />
+                </div>
+
+                <div class="item clearfix">
+                    <label for="equipment2" class="label">Equipment:</label>
+                    <input id="equipment2" type="checkbox" ng-model="newItem.equipment" ng-checked="{{newItem.equipment}}" ng-init="newItem.equipment=false" />
+                </div>
+
+                <div class="item clearfix">
+                    <label for="open2" class="label">Open:</label>
+                    <input id="open2" type="checkbox" ng-model="newItem.open" ng-checked="{{newItem.open}}" ng-init="newItem.open=true" />
+                </div>
+
+                <div class="item clearfix">
+                    <label for="sortOrder" class="label"><b>*</b>Sort Order:</label>
+                    <input ng-model="newItem.sortOrder" type="text" class="text" id="sortOrder" ng-validator required name="sortOrder" placeholder="Sort Order should be number" />
+                    <p class="valid_eror" ng-show="menuForm.sortOrder.$error">Required.</p>
+                </div>
+
+                <p class="tr mt">
+                    <button class="auto_c_btn prim sbmt" type="submit">Save</button>
+                </p>
+            </div>
+        </form>
+
+        <i class="closeIco pop_win_close"></i>
+
+    </div>
+</div>
+<!-- / pop up window -->

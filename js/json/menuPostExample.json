@@ -1,0 +1,27 @@
+{
+  "InfoMenu": {
+    "menuCheck": true,
+    "menuType": "sample string 2",
+    "id": 3,
+    "menuName": "sample string 4",
+    "menuUrlCtrl": "sample string 5",
+    "menuUrlAct": "sample string 6"
+  },
+  "menuStaff": [
+    {
+      "name": "sample string 1",
+      "id": "sample string 2",
+      "checked": true
+    },
+    {
+      "name": "sample string 1",
+      "id": "sample string 2",
+      "checked": true
+    },
+    {
+      "name": "sample string 1",
+      "id": "sample string 2",
+      "checked": true
+    }
+  ]
+}

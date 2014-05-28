@@ -1,0 +1,29 @@
+[
+		{
+			"lanId": "12",
+			"name": "2",
+			"previousCCCode": "3",
+			"previousCCName": "sdfsfs",
+			"changedCCCode": "sdfsfs",
+			"changedCCName": "sdfsfs",
+			"updateTime": "4/1/2014 8:03:16 PM"
+		},
+		{
+			"lanId": "123",
+			"name": "2",
+			"previousCCCode": "3",
+			"previousCCName": "sdfsfs",
+			"changedCCCode": "sdfsfs",
+			"changedCCName": "sdfsfs",
+			"updateTime": "4/1/2014 8:03:16 PM"
+		},
+		{
+			"lanId": "321",
+			"name": "2",
+			"previousCCCode": "3",
+			"previousCCName": "sdfsfs",
+			"changedCCCode": "sdfsfs",
+			"changedCCName": "sdfsfs",
+			"updateTime": "4/1/2014 8:03:16 PM"
+		}
+	]

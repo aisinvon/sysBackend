@@ -1,0 +1,110 @@
+<form name="staffForm" action="" ng-submit="staffSubmit(staffForm.$valid, newItem)" novalidate>
+    <!-- angularWrap -->
+    <div id="angularWrap" class="tls_adm tls_menuPriv">
+        <!-- mod_toggle 01 -->
+        <div class="mod_input mod_toggle on" ng-show="menuInfoIptStatus" data-show="true">
+            <h4><i class="addIco"></i>Basic Menu Information</h4>
+            <!-- toggle_con -->
+            <div class="toggle_con">
+                <div class="item clearfix">
+                    <label for="menuName" class="label"><b>*</b>Menu Name:</label>
+                    <input ng-model="newItem.menuName" type="text" class="text" id="menuName" name="menuName" ng-validator required />
+                    <p class="valid_eror" ng-show="staffForm.menuName.$error">Required.</p>
+                </div>
+                <div class="item clearfix">
+                    <label for="menuType" class="label"><b>*</b>Menu Type:</label>
+                    <select ng-model="newItem.menuType" name="menuType" id="menuType" ng-validator required >
+                        <option value=""></option>
+                        <option value="TopMenu">Top Menu</option>
+                        <option value="SubMenu">Sub Menu</option>
+                        <option value="Page">Page</option>
+                    </select>
+                    <p class="valid_eror" ng-show="staffForm.menuType.$error">Required.</p>
+                </div>
+                <div class="item clearfix">
+                    <label for="menuUrlCtrl" class="label"><b>*</b>Menu Url Controller:</label>
+                    <input ng-model="newItem.menuUrlCtrl" type="text" class="text" id="menuUrlCtrl" name="menuUrlCtrl" ng-validator required />
+                    <p class="valid_eror" ng-show="staffForm.menuUrlCtrl.$error">Required.</p>
+                </div>
+                <div class="item clearfix">
+                    <label for="menuUrlAct" class="label"><b>*</b>Menu Url Action:</label>
+                    <input ng-model="newItem.menuUrlAct" type="text" class="text" id="menuUrlAct" name="menuUrlAct" ng-validator required />
+                    <p class="valid_eror" ng-show="staffForm.menuUrlAct.$error">Required.</p>
+                </div>
+                <div class="item clearfix">
+                    <label for="menuCheck" class="label">Menu Show:</label>
+                    <input ng-model="newItem.menuCheck" type="checkbox" class="checkbox" id="menuCheck" name="menuCheck" />
+                </div>
+            </div>
+            <!-- / toggle_con -->
+        </div>
+        <!-- / mod_toggle 01 -->
+
+        <!-- mod_toggle 02 -->
+        <div class="mod_input mod_toggle on">
+            <h4><i class="addIco"></i>Set Menu Access Level</h4>
+            <!-- toggle_con -->
+            <div class="toggle_con">
+                <h5>Not Owning Employee Service
+                    <span>Owning Employee Service</span>
+                </h5>
+
+                <div class="tls_ipt js_tls_ipt">
+                    <input ng-keyup="searchList(str)" ng-model="str" type="text" class="text" />
+                    <button type="button" class="search_btn">Search</button>
+                </div>
+                <!-- tls -->
+                <div class="tls js_tls clearfix">
+                    <!--tls_table-->
+                    <div class="tls_table js_table">
+                        <div class="in">
+                            <p ng-show="tipLoadingStatus" class="tip_loading">Loading....</p>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th width="80" data-type="text">
+                                            <span class="tls_thSpan"><i class="sortIco"></i>ID</span>
+                                        </th>
+                                        <th width="100" data-type="text">
+                                            <span class="tls_thSpan"><i class="sortIco"></i>Name</span>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- <tr ng-dblclick="dbClickItem(item, 'toR')" ng-click="clickItem(item, 'toR')" ng-grid="gridOptions">
+                                        <td ng-toggle-class>{{item.id}}</th>
+                                        <td ng-toggle-class>{{item.name}}</th>
+                                    </tr> -->
+                                    <tr ng-dblclick="dbClickItem(item, 'toR')" ng-click="clickItem(item, 'toR')" ng-repeat="item in items | filter:str | limitTo:numLimit">
+                                        <td ng-toggle-class>{{item.id}}</th>
+                                        <td ng-toggle-class>{{item.name}}</th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!--/tls_table-->
+                    <div class="tls_btn js_tls_btn">
+                        <span ng-click="moveItem('toR')" class="to_r"></span>
+                        <span ng-click="moveItem('toL')" class="to_l"></span>
+                    </div>
+                    <div class="tls_result js_tls_result">
+                        <div ng-dblclick="dbClickItem(slcted, 'toL')" ng-click="clickItem(slcted, 'toL')" ng-repeat="slcted in slcteds">
+                            <p ng-toggle-class>{{slcted.id}}/{{slcted.name}}</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- / tls -->
+            </div>
+            <!-- / toggle_con -->
+        </div>
+        <!-- / mod_toggle -->
+
+        <p class="tr mt">
+            <button type="button" class="auto_c_btn cancel pop_win_close">Cancel</button>
+            <button ng-click="staffSlct(staffForm.$valid)" type="submit" class="auto_c_btn prim sbmt js_showPopBtn">Submit</button>
+        </p>
+
+    </div>
+    <!-- / angularWrap-->
+</form>

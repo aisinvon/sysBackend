@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>MIS Admin Management</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" type="text/css" href="../css/base.css" />
+    <link rel="stylesheet" type="text/css" href="../css/pris.css" />
+    <link rel="stylesheet" type="text/css" href="../css/pris.admin.css" />
+    <link rel="stylesheet" type="text/css" href="../css/plugins/jquery-ui/jquery.ui.css" />
+</head>
+<body>
+
+<div class="pageWrapper">
+	
+	<!-- header -->
+	<!-- top -->
+	<div class="top clearfix">
+	    <div class="wrap">
+	        <a class="logo" href=""><img src="../images/logo.png" alt="Company" /></a>
+	        <a href=""><img class="slogan" src="../images/slogan.png" alt="Company Hangzhou: Management Information System (MIS)" /></a>	
+	    </div>
+	</div>
+	<!-- / top -->
+
+	<!-- nav -->
+	<div class="nav">
+	    <div class="wrap">
+	        <ul class="clearfix">
+	            <!-- add class on, then that nav will be highlighted -->
+	            <li class="nav_home"><a href="../../"><i class="navIco"></i>Homepage<i class="downArowIco"></i></a></li>
+	            <li class="nav_setting on">
+	                <a href="../index"><i class="navIco"></i>System Menu<i class="downArowIco"></i></a>
+	                <!-- second level menu -->
+	                <ul>
+	                    <li>
+	                       <a href="../menu/index.html#menu">Set Menu Access</a>
+	                    </li>
+	                    <li>
+	                       <a href="../role/index.html#role">Set User Role</a>
+	                    </li>
+	                    <li>
+	                       <a href="../index/index.html#staff-list">Staff Management</a>
+	                    </li>
+	                    <li>
+	                       <a href="../index/index.html#cost-center">Cost Center Management</a>
+	                    </li>
+	                    <li>
+	                       <a href="../index/index.html#team">Team Management</a>
+	                    </li>
+	                    <li>
+	                       <a href="../index/index.html#category">Category Item</a>
+	                    </li>
+	                    <li>
+	                       <a href="../index/index.html#meeting-room">Meeting Room Management</a>
+	                    </li>
+	                </ul>
+	                <!-- / second level menu -->
+	            </li>
+	        </ul>
+	    </div>
+	</div>
+	<!-- / nav -->
+    <!-- / header -->
+
+	<!-- ng-view for template -->
+	<!-- <input type="hidden" id="api_prefix" value="/Test/api/" /> -->
+	<input type="hidden" id="api_prefix" value="" />
+    <div ng-view></div>
+	<!-- / ng-view for template -->
+	<!-- footer -->
+	<div class="footer clearfix">
+	    <div class="wrap">
+	        <a href="homepage.html" class="logo">Company</a>
+	        <ul>
+	            <li><a href="">SSTC</a></li>
+	            <li><a href="">Atrack</a></li>
+	            <li><a href="">SSHOME</a></li>
+	            <li><a href="">LMS</a></li>
+	            <li><a href="">Support</a></li>
+	            <li><a href="">eBusiness</a></li>
+	        </ul>
+	    </div>
+	</div>
+	<!-- / footer -->
+
+</div>
+
+	<!-- jQuery -->
+    <script type="text/javascript" src="../js/scripts/jQuery/jQuery.1.7.2.min.js"></script>
+    <script type="text/javascript" src="../js/scripts/jQuery/pris.admin.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            fedPris.common();
+        });
+    </script>
+	<!-- angular -->
+    <script data-main="../js/main.js" src="../js/scripts/requirejs/require.js"></script>
+</body>
+</html>

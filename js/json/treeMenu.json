@@ -1,0 +1,543 @@
+[
+    {
+        "id": 1,
+        "name": "VirtualMenu",
+        "enable": true,
+        "isChecked": true,
+        "children": [
+            {
+                "id": 3,
+                "name": null,
+                "enable": false,
+                "isChecked": true,
+                "children": [
+                    {
+                        "id": 29,
+                        "name": "My Staff ITO",
+                        "enable": true,
+                        "checked": true,
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 4,
+                "name": "My Project",
+                "enable": true,
+                "checked": true,
+                "children": [
+                    {
+                        "id": 28,
+                        "name": "My Project ITO",
+                        "enable": true,
+                        "check": false,
+                        "children": [
+                            {
+                                "id": 47,
+                                "name": "newNode",
+                                "enable": false,
+                                "check": false,
+                                "children": [
+                                    {
+                                        "id": 52,
+                                        "name": "newNode",
+                                        "enable": false,
+                                        "check": false,
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 5,
+                "name": "Operation Service",
+                "enable": true,
+                "check": false,
+                "children": [
+                    {
+                        "id": 6,
+                        "name": "Billing",
+                        "enable": true,
+                        "check": false,
+                        "children": []
+                    },
+                    {
+                        "id": 7,
+                        "name": "Invoice",
+                        "enable": false,
+                        "check": false,
+                        "children": []
+                    },
+                    {
+                        "id": 25,
+                        "name": "Billing By PMO",
+                        "enable": true,
+                        "check": false,
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 6,
+                "name": "Billing",
+                "enable": true,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 7,
+                "name": "Invoice",
+                "enable": false,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 8,
+                "name": "Report Center",
+                "enable": true,
+                "check": false,
+                "children": [
+                    {
+                        "id": 9,
+                        "name": "Excutive Dashboard/Report",
+                        "enable": false,
+                        "check": false,
+                        "children": []
+                    },
+                    {
+                        "id": 10,
+                        "name": "ITO ADM/CTS Dashboard",
+                        "enable": false,
+                        "check": false,
+                        "children": []
+                    },
+                    {
+                        "id": 11,
+                        "name": "Management Report",
+                        "enable": false,
+                        "check": false,
+                        "children": []
+                    },
+                    {
+                        "id": 12,
+                        "name": "Resource Matrix",
+                        "enable": false,
+                        "check": false,
+                        "children": []
+                    },
+                    {
+                        "id": 13,
+                        "name": "Billing Report",
+                        "enable": true,
+                        "check": false,
+                        "children": []
+                    },
+                    {
+                        "id": 14,
+                        "name": "Operational Report",
+                        "enable": false,
+                        "check": false,
+                        "children": [
+                            {
+                                "id": 15,
+                                "name": "Contractor Service Report",
+                                "enable": false,
+                                "check": false,
+                                "children": []
+                            },
+                            {
+                                "id": 16,
+                                "name": "Consultant Status Tracking",
+                                "enable": false,
+                                "check": false,
+                                "children": []
+                            },
+                            {
+                                "id": 17,
+                                "name": "Monthly billing workhour Report",
+                                "enable": false,
+                                "check": false,
+                                "children": []
+                            },
+                            {
+                                "id": 18,
+                                "name": "Transition resource report",
+                                "enable": false,
+                                "check": false,
+                                "children": []
+                            },
+                            {
+                                "id": 20,
+                                "name": "Struct Report",
+                                "enable": false,
+                                "check": false,
+                                "children": []
+                            },
+                            {
+                                "id": 21,
+                                "name": "Atrack Report",
+                                "enable": false,
+                                "check": false,
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": 19,
+                        "name": "Atrack Customized Report",
+                        "enable": false,
+                        "check": false,
+                        "children": []
+                    },
+                    {
+                        "id": 22,
+                        "name": "Others",
+                        "enable": false,
+                        "check": false,
+                        "children": [
+                            {
+                                "id": 23,
+                                "name": "Name Register",
+                                "enable": false,
+                                "check": false,
+                                "children": []
+                            },
+                            {
+                                "id": 24,
+                                "name": "Monthly CostCenter ChangeList",
+                                "enable": false,
+                                "check": false,
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 9,
+                "name": "Excutive Dashboard/Report",
+                "enable": false,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 10,
+                "name": "ITO ADM/CTS Dashboard",
+                "enable": false,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 11,
+                "name": "Management Report",
+                "enable": false,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 12,
+                "name": "Resource Matrix",
+                "enable": false,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 13,
+                "name": "Billing Report",
+                "enable": true,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 14,
+                "name": "Operational Report",
+                "enable": false,
+                "check": false,
+                "children": [
+                    {
+                        "id": 15,
+                        "name": "Contractor Service Report",
+                        "enable": false,
+                        "check": false,
+                        "children": []
+                    },
+                    {
+                        "id": 16,
+                        "name": "Consultant Status Tracking",
+                        "enable": false,
+                        "check": false,
+                        "children": []
+                    },
+                    {
+                        "id": 17,
+                        "name": "Monthly billing workhour Report",
+                        "enable": false,
+                        "check": false,
+                        "children": []
+                    },
+                    {
+                        "id": 18,
+                        "name": "Transition resource report",
+                        "enable": false,
+                        "check": false,
+                        "children": []
+                    },
+                    {
+                        "id": 20,
+                        "name": "Struct Report",
+                        "enable": false,
+                        "check": false,
+                        "children": []
+                    },
+                    {
+                        "id": 21,
+                        "name": "Atrack Report",
+                        "enable": false,
+                        "check": false,
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 15,
+                "name": "Contractor Service Report",
+                "enable": false,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 16,
+                "name": "Consultant Status Tracking",
+                "enable": false,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 17,
+                "name": "Monthly billing workhour Report",
+                "enable": false,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 18,
+                "name": "Transition resource report",
+                "enable": false,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 19,
+                "name": "Atrack Customized Report",
+                "enable": false,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 20,
+                "name": "Struct Report",
+                "enable": false,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 21,
+                "name": "Atrack Report",
+                "enable": false,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 22,
+                "name": "Others",
+                "enable": false,
+                "check": false,
+                "children": [
+                    {
+                        "id": 23,
+                        "name": "Name Register",
+                        "enable": false,
+                        "check": false,
+                        "children": []
+                    },
+                    {
+                        "id": 24,
+                        "name": "Monthly CostCenter ChangeList",
+                        "enable": false,
+                        "check": false,
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 23,
+                "name": "Name Register",
+                "enable": false,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 24,
+                "name": "Monthly CostCenter ChangeList",
+                "enable": false,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 25,
+                "name": "Billing By PMO",
+                "enable": true,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 28,
+                "name": "My Project ITO",
+                "enable": true,
+                "check": false,
+                "children": [
+                    {
+                        "id": 47,
+                        "name": "newNode",
+                        "enable": false,
+                        "check": false,
+                        "children": [
+                            {
+                                "id": 52,
+                                "name": "newNode",
+                                "enable": false,
+                                "check": false,
+                                "children": []
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": 29,
+                "name": "My Staff ITO",
+                "enable": true,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 30,
+                "name": "System Menu",
+                "enable": true,
+                "check": false,
+                "children": [
+                    {
+                        "id": 31,
+                        "name": "Staff Management",
+                        "enable": true,
+                        "check": true,
+                        "children": []
+                    },
+                    {
+                        "id": 33,
+                        "name": "Set Menu Access Level",
+                        "enable": true,
+                        "check": true,
+                        "children": []
+                    },
+                    {
+                        "id": 34,
+                        "name": "Set User Role",
+                        "enable": true,
+                        "check": false,
+                        "children": []
+                    },
+                    {
+                        "id": 35,
+                        "name": "Staff Management",
+                        "enable": true,
+                        "check": false,
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 31,
+                "name": "Staff Management",
+                "enable": true,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 32,
+                "name": "System Menu",
+                "enable": true,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 33,
+                "name": "Set Menu Access Level",
+                "enable": true,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 34,
+                "name": "Set User Role",
+                "enable": true,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 35,
+                "name": "Staff Management",
+                "enable": true,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 37,
+                "name": "Test",
+                "enable": false,
+                "check": false,
+                "children": [
+                    {
+                        "id": 61,
+                        "name": "newNode",
+                        "enable": false,
+                        "check": false,
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 47,
+                "name": "newNode",
+                "enable": false,
+                "check": false,
+                "children": [
+                    {
+                        "id": 52,
+                        "name": "newNode",
+                        "enable": false,
+                        "check": false,
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "id": 52,
+                "name": "newNode",
+                "enable": false,
+                "check": false,
+                "children": []
+            },
+            {
+                "id": 61,
+                "name": "newNode",
+                "enable": false,
+                "check": false,
+                "children": []
+            }
+        ]
+    }
+]
