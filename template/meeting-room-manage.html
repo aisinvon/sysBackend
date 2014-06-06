@@ -2,8 +2,8 @@
 <div class="main wrap clearfix">
     <h3 class="pg_tit">Meeting Room Management</h3>
     <!-- angularWrap -->
-    <div id="angularWrap" data-source="../js/json/listStaff.json">
-    <!-- <div id="angularWrap"  data-prefix="SystemMenuWebAPIJSon/GetMeetingRoomBySearch" data-source="SystemMenuWebAPIJSon/GetMeetingRoomBySearch?location=&building=&floor=&meetingRoom=&open=&computer=&voIP=&video="> -->
+    <!-- <div id="angularWrap" data-source="../js/json/listStaff.json"> -->
+        <div id="angularWrap"  data-prefix="SystemMenuWebAPIJSon/GetMeetingRoomBySearch" data-source="SystemMenuWebAPIJSon/GetMeetingRoomBySearch?location=&building=&floor=&meetingRoom=&open=&computer=&voIP=&video=">
 
         <!-- mod_filter -->
         <div class="mod_filter filter_staff clearfix">
@@ -12,8 +12,8 @@
                     <label class="label" for="location">Location:</label>
                     <select ng-model="search.location" ng-init="search.location=''" name="location" id="location">
                         <option value=""></option>
-                        <option value="Tang">Tang</option>
-                        <option value="Maxia">Maxia</option>
+                        <option value="Tiantang">Tiantang</option>
+                        <option value="Insigma">Insigma</option>
                     </select>
                 </div>
                 <div class="item">
@@ -148,19 +148,19 @@
                     <td>{{item.meetingRoom}}</td>
                     <td>{{item.capability}}</td>
                     <td>
-                        <input type="checkbox" ng-model="item.computer" ng-checked="{{item.computer}}" />
+                        <input disabled="disabled" type="checkbox" ng-model="item.computer" ng-checked="{{item.computer}}" />
                     </td>
                     <td>
-                        <input type="checkbox" ng-model="item.voIP" ng-checked="{{item.voIP}}" />
+                        <input disabled="disabled" type="checkbox" ng-model="item.voIP" ng-checked="{{item.voIP}}" />
                     </td>
                     <td>
-                        <input type="checkbox" ng-model="item.video" ng-checked="{{item.video}}" />
+                        <input disabled="disabled" type="checkbox" ng-model="item.video" ng-checked="{{item.video}}" />
                     </td>
                     <td>
-                        <input type="checkbox" ng-model="item.equipment" ng-checked="{{item.equipment}}" />
+                        <input disabled="disabled" type="checkbox" ng-model="item.equipment" ng-checked="{{item.equipment}}" />
                     </td>
                     <td>
-                        <input type="checkbox" ng-model="item.open" ng-checked="{{item.open}}" />
+                        <input disabled="disabled" type="checkbox" ng-model="item.open" ng-checked="{{item.open}}" />
                     </td>
                     <td>
                         {{item.sortOrder}}
@@ -223,8 +223,8 @@
                     <label for="location" class="label"><b>*</b>Location:</label>
                     <select ng-model="newItem.location" name="location" id="location" ng-validator required>
                         <option value=""></option>
-                        <option value="Tang">Tang</option>
-                        <option value="Maxia">Maxia</option>
+                        <option value="Tiantang">Tiantang</option>
+                        <option value="Insigma">Insigma</option>
                     </select>
                     <p class="valid_eror" ng-show="menuForm.location.$error">Required.</p>
                 </div>
@@ -233,13 +233,13 @@
                     <label for="building" class="label"><b>*</b>Building:</label>
                     <select ng-model="newItem.building" name="building" id="building" ng-validator required>
                         <option value=""></option>
-                        <option value="Maxia-2F">Maxia-2F</option>
-                        <option value="Maxia-3F">Maxia-3F</option>
-                        <option value="Maxia-4F">Maxia-4F</option>
-                        <option value="Maxia-5F">Maxia-5F</option>
-                        <option value="Maxia-6F">Maxia-6F</option>
-                        <option value="Tang-2">Tang-2</option>
-                        <option value="Tang-3">Tang-3</option>
+                        <option value="TT-2F">TT-2F</option>
+                        <option value="TT-3F">TT-3F</option>
+                        <option value="TT-4F">TT-4F</option>
+                        <option value="TT-5F">TT-5F</option>
+                        <option value="TT-6F">TT-6F</option>
+                        <option value="J2">Insigma J2</option>
+                        <option value="J3">Insigma J3</option>
                     </select>
                     <p class="valid_eror" ng-show="menuForm.building.$error">Required.</p>
                 </div>

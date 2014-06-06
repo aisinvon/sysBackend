@@ -4,7 +4,7 @@
     var prisAdmGCfg = {
         // use stamp in directive, ctrollor and template page to prevent file cache
         // stamp: (new Date()).getTime()
-        stamp: ''
+        stamp: ' '
     }
     /**
      * ---------------------------------------------------------------------------------
@@ -1924,6 +1924,10 @@
                         if (data.success) {
                             // hide loading image
                             fedPris.closeAllPop(3000);
+                            var newUrl = generateNewHref(opt.defaultNode);
+                            window.location = newUrl;
+                            // highlight Menu by id in url
+                            highlightMenu(opt.defaultNode);
                         } else {
                             alert('Delete node failed, please try again later.')
                         }
@@ -2088,8 +2092,8 @@
                 setting: '2',
                 // get json data base on custom url
                 // used for debug
-                dataUrl: $('#tree_roleGroup').attr('data-source') + ''
-                // dataUrl: $('#tree_roleGroup').attr('data-source') + '1'
+                // dataUrl: $('#tree_roleGroup').attr('data-source') + ''
+                dataUrl: $('#tree_roleGroup').attr('data-source') + '1'
             });
             this.zTree({
                 id: '#tree_roleMenu',

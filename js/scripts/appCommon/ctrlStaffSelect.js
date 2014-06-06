@@ -27,17 +27,15 @@ define(['app', 'direToggleClass', 'direValidator'], function(appPris) {
                 $scope.menuInfoIptStatus = false;
                 $scope.roleInfoIptStatus = true;
                 if (routePara === undefined) {
-                    // used for debug
-                    routePara = '';
-                    // routePara = '1';
+                    routePara = '1';
                 }
             } else {
                 $scope.menuInfoIptStatus = true;
                 $scope.roleInfoIptStatus = false;
                 if (routePara === undefined) {
                     // used for debug
-                    routePara = '';
-                    // routePara = '3';
+                    // routePara = '';
+                    routePara = '3';
                 }
             }
 

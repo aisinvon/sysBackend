@@ -2,8 +2,8 @@
 <div class="main wrap clearfix">
 	<h3 class="pg_tit">Staff List in MIS</h3>
 	<!-- angularWrap -->
-	<div id="angularWrap" data-source="../js/json/listStaff.json">
-    <!-- <div id="angularWrap" data-prefix="SystemMenuWebAPIJSon/GetStaffListInPris" data-source="SystemMenuWebAPIJSon/GetStaffListInPris?from_enrolldate=&to_enrolldate=&from_resigned=&to_resigned=&lanid=&name=&resourceCategory=&banding=&degree=&cccode=&staffstatus="> -->
+	<!-- <div id="angularWrap" data-source="../js/json/listStaff.json"> -->
+    <div id="angularWrap" data-prefix="SystemMenuWebAPIJSon/GetStaffListInPris" data-source="SystemMenuWebAPIJSon/GetStaffListInPris?from_enrolldate=&to_enrolldate=&from_resigned=&to_resigned=&lanid=&name=&resourceCategory=&banding=&degree=&cccode=&staffstatus=">
 		
 		<ul class="tab_tit clearfix">
 		    <li class="on"><a href="#staff-list">Staff List in MIS<i></i></a></li>
@@ -28,7 +28,7 @@
                     <label class="label" for="resourceCategory">Resource Category:</label>
                     <select ng-model="search.resourceCategory" ng-init="search.resourceCategory=''" name="resourceCategory" id="resourceCategory">
                         <option value=""></option>
-                        <option ng-repeat="(index, value) in resoCates" value="{{value}}">{{value}}</option>
+                        <option ng-repeat="resoCate in resoCates" value="{{resoCate.itemName}}">{{resoCate.itemName}}</option>
                     </select>
                 </div>
                 <div class="item item_short">

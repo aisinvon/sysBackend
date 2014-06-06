@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>MIS Admin: Set Menu of Role</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link rel="stylesheet" type="text/css" href="../css/base.css" />
     <link rel="stylesheet" type="text/css" href="../css/pris.css" />
     <link rel="stylesheet" type="text/css" href="../css/pris.admin.css" />
@@ -71,14 +71,13 @@
 
         <!-- main content -->
         <div class="main wrap clearfix">
-            <!-- <input type="hidden" id="api_prefix" value="/Test/api/" /> -->
-            <input type="hidden" id="api_prefix" value="" />
+            <input type="hidden" id="api_prefix" value="/Test/api/" />
             <input type="hidden" id="post_sbmtUserRole" value="SetUserRole/Submit" />
             <input type="hidden" id="post_sbmtMenuRole" value="SetMenuRole/Submit" />
             <input type="hidden" id="postPrefix_add" value="SetUserRole/AddNewRoleAndReturnId?&roleName=&parentRoleId=" />
             <input type="hidden" id="postPrefix_del" value="SetUserRole/DropRole?roleid=" />
-            <!-- <input type="hidden" id="dataSource_staff" value="SystemMenuWebAPIJSon/GetUserSelectorByRoleWithCheck?roleName=newRole&roleid=" /> -->
-            <input type="hidden" id="dataSource_staff" value="../js/json/teamLeader.json" />
+            <input type="hidden" id="dataSource_staff" value="SystemMenuWebAPIJSon/GetUserSelectorByRoleWithCheck?roleName=newRole&roleid=" />
+            <!-- <input type="hidden" id="dataSource_staff" value="../js/json/teamLeader.json" /> -->
 
             <h3 class="pg_tit">Set User Role</h3>
 
@@ -89,8 +88,8 @@
                     <div class="mod_toggle on">
                         <h4><i class="addIco"></i>Set Menu Access Level</h4>
                         <div class="toggle_con">
-                            <!-- <ul id="tree_roleGroup" class="ztree" data-source="/Test/api/SystemMenuWebAPIJSon/GetMenuForRoleWithCheck?roleid="></ul> -->
-                            <ul id="tree_roleGroup" class="ztree" data-source="../js/json/treeMenu.json"></ul>
+                            <ul id="tree_roleGroup" class="ztree" data-source="/Test/api/SystemMenuWebAPIJSon/GetMenuForRoleWithCheck?roleid="></ul>
+                            <!-- <ul id="tree_roleGroup" class="ztree" data-source="../js/json/treeMenu.json"></ul> -->
                         </div>
                     </div>
 
@@ -101,8 +100,8 @@
                 <!-- mod_adm_l -->
                 <div class="mod_adm_l">
                     <!-- <div class="tree_menuPriv"> -->
-                    <!-- <ul id="tree_roleMenu" class="ztree" data-source="/Test/api/SystemMenuWebAPIJSon/GetRole"></ul> -->
-                    <ul id="tree_roleMenu" class="ztree" data-source="../js/json/treeMenu.json"></ul>
+                    <ul id="tree_roleMenu" class="ztree" data-source="/Test/api/SystemMenuWebAPIJSon/GetRole"></ul>
+                    <!-- <ul id="tree_roleMenu" class="ztree" data-source="../js/json/treeMenu.json"></ul> -->
                 </div>
                 <!-- / mod_adm_l -->
 

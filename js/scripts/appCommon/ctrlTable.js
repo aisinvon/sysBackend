@@ -10,7 +10,7 @@ define(['app', 'direValidator', 'direDatepicker', 'direMonthpicker', 'filterPage
                 dataSource = $('#angularWrap').attr('data-source'),
                 dataPrefix = $('#angularWrap').attr('data-prefix'),
                 ccUrl = apiPrefix + 'SetCCManagement/GetCostCenter',
-                resoCateUrl = apiPrefix + 'SetUserRole/GetResourceCategory',
+                resoCateUrl = apiPrefix + 'DataItem/GetDataItemList?item=&categoryid=7',
                 itUnitUrl = apiPrefix + 'SetBusinessUnitManagement/GetBusinessUnit',
                 itemCateUrl = apiPrefix + 'DataItem/GetDataItemCategoryList',
                 finalUrl = apiPrefix + dataSource;
@@ -310,6 +310,13 @@ define(['app', 'direValidator', 'direDatepicker', 'direMonthpicker', 'filterPage
                     $scope.currentPage++;
                 }
             }
+            function goToRightPg(pgCur){
+                var pgNum = $scope.numberOfPages();
+
+                // if current page number > all pages number, then go to last page
+                // (pgCur >= pgNum && pgCur !== 0) ? $scope.currentPage = pgNum - 1 : $scope.currentPage = pgCur;
+                $scope.currentPage = 0;
+            }
 
 
             /**
@@ -327,7 +334,7 @@ define(['app', 'direValidator', 'direDatepicker', 'direMonthpicker', 'filterPage
                     $scope.items = data;
                     $scope.numLimit = 10;
                     // go to current page
-                    $scope.currentPage = $scope.currentPage;
+                    goToRightPg($scope.currentPage);
                 });
             }
             /**
@@ -363,7 +370,7 @@ define(['app', 'direValidator', 'direDatepicker', 'direMonthpicker', 'filterPage
                         $scope.items = data;
                         $scope.numLimit = 10;
                         // go to current page
-                        $scope.currentPage = $scope.currentPage;
+                        goToRightPg($scope.currentPage);
                     }).error(function(data, status, headers, config) {
                         fedPris.closeAllPop();
                         alert('Error, please try again later.')

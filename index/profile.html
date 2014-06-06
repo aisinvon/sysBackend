@@ -3,7 +3,7 @@
     
     <head>
         <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>Edit Staff Status</title>
         <link rel="stylesheet" type="text/css" href="../css/base.css" />
         <link rel="stylesheet" type="text/css" href="../css/pris.css" />
@@ -17,8 +17,8 @@
             <!-- top -->
             <div class="top clearfix">
                 <div class="wrap">
-                    <a class="logo" href=""><img src="../images/logo.png" alt="Company" /></a>
-                    <a href=""><img class="slogan" src="../images/slogan.png" alt="Company Hangzhou: Management Information System (MIS)" /></a>   
+                    <a class="logo" href=""><img src="../images/logo.png" alt="STATE STREET" /></a>
+                    <a href=""><img class="slogan" src="../images/slogan.png" alt="State Street Hangzhou: Management Information System (MIS)" /></a>   
                 </div>
             </div>
             <!-- / top -->
@@ -148,12 +148,20 @@
                                 <input id="EnrollDate" class="text date_month" type="text" />
                             </div>
                             <div class="item clearfix">
+                                <label class="label" for="resignDate">Resign Date:</label>
+                                <input id="resignDate" class="text date_month" type="text" />
+                            </div>
+                            <div class="item clearfix">
                                 <label class="label" for="bu">Business Unit:</label>
                                 <input id="bu" class="text" disabled="disabled" type="text" value="error" />
                             </div>
                             <div class="item clearfix">
                                 <label class="label" for="ResCate">Resource type:</label>
-                                <input id="ResCate" class="text" type="text" value="FTE" />
+                                <select name="" id="ResCate">
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                </select>
                             </div>
                             <div class="item clearfix">
                                 <label class="label" for="CCName">Cost Center:</label>
@@ -174,7 +182,11 @@
                             </div>
                             <div class="item clearfix">
                                 <label class="label" for="ServiceCategory">Service Category:</label>
-                                <input id="ServiceCategory" class="text" type="text" value="DEV" />
+                                <select name="" id="ServiceCategory">
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                </select>
                             </div>
                             <div class="item clearfix">
                                 <label class="label" for="banding">Banding:</label>
@@ -299,7 +311,7 @@
             <!-- footer -->
             <div class="footer clearfix">
                 <div class="wrap">
-                    <a href="homepage.html" class="logo">Company</a>
+                    <a href="homepage.html" class="logo">STATE STREET</a>
                     <ul>
                         <li>
                             <a href="">SSTC</a>

@@ -2,8 +2,8 @@
 <div class="main wrap clearfix">
     <h3 class="pg_tit">Cost Center Management</h3>
     <!-- angularWrap -->
-    <div id="angularWrap" data-source="../js/json/listStaff.json">
-        <!-- <div id="angularWrap"  data-prefix="SystemMenuWebAPIJSon/GetCostCenterManagementBySearch" data-source="SystemMenuWebAPIJSon/GetCostCenterManagementBySearch?from=&to=&costcenter=&costcentername=&devision="> -->
+    <!-- <div id="angularWrap" data-source="../js/json/listStaff.json"> -->
+        <div id="angularWrap"  data-prefix="SystemMenuWebAPIJSon/GetCostCenterManagementBySearch" data-source="SystemMenuWebAPIJSon/GetCostCenterManagementBySearch?from=&to=&costcenter=&costcentername=&devision=">
 
         <!-- mod_filter -->
         <div class="mod_filter filter_staff clearfix">
@@ -26,7 +26,7 @@
                     <label class="label" for="devision">Division:</label>
                     <select ng-model="search.devision" ng-init="search.devision=''" name="devision" id="devision">
                         <option value=""></option>
-                        <option ng-repeat="itUnit in itUnits" value="{{itUnit.name}}">{{itUnit.name}}</option>
+                        <option ng-repeat="itUnit in itUnits" value="{{itUnit.id}}">{{itUnit.name}}</option>
                     </select>
                 </div>
                 <div class="item item_short">
