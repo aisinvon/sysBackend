@@ -24,18 +24,29 @@ define(['app', 'direToggleClass', 'direValidator'], function(appPris) {
 
             // load different data based on menu id in url
             if (_hash.indexOf('role') > 0) {
-                $scope.menuInfoIptStatus = false;
                 $scope.roleInfoIptStatus = true;
+                $scope.menuInfoIptStatus = false;
+                $scope.activityInfoIptStatus = false;
                 if (routePara === undefined) {
                     routePara = '1';
                 }
-            } else {
+            } else if(_hash.indexOf('menu') > 0) {
                 $scope.menuInfoIptStatus = true;
                 $scope.roleInfoIptStatus = false;
+                $scope.activityInfoIptStatus = false;
                 if (routePara === undefined) {
                     // used for debug
                     // routePara = '';
                     routePara = '3';
+                }
+            } else if(_hash.indexOf('activity') > 0){
+                $scope.activityInfoIptStatus = true;
+                $scope.roleInfoIptStatus = false;
+                $scope.menuInfoIptStatus = false;
+                if (routePara === undefined) {
+                    // used for debug
+                    // routePara = '';
+                    routePara = '1';
                 }
             }
 
@@ -91,6 +102,8 @@ define(['app', 'direToggleClass', 'direValidator'], function(appPris) {
                         $scope.newItem = data[0].infoMenu;
                     }else if($scope.roleInfoIptStatus){
                         $scope.newItem = data[0].infoRole;
+                    }else if($scope.activityInfoIptStatus){
+                        $scope.newItem = data[0].infoactivity;
                     }
 
                     $scope.items = arayNormal;
@@ -257,9 +270,15 @@ define(['app', 'direToggleClass', 'direValidator'], function(appPris) {
                         postUrl = apiPrefix + $('#post_sbmtUserRole').val();
                         postObj.infoRole = item;
                         postObj.infoRole.id = Number(routePara);
+                    } else if($scope.activityInfoIptStatus){
+                        postUrl = apiPrefix + $('#post_sbmtUserRole').val();
+                        postObj.infoRole = item;
+                        postObj.infoRole.id = Number(routePara);
                     }
                     
                     postObj.infoStaff = $.unique(changedValueAray);
+
+                    console.log(postObj);
 
                     $http({
                         method: 'POST',

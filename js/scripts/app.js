@@ -70,6 +70,14 @@ define(['angularAMD', 'angular-route'], function(angularAMD) {
             when('/role/:nodeId', angularAMD.route({
                 templateUrl: '../template/role-staff-slct.html?stamp=' + prisAdmGCfg.stamp,
                 controller: 'ctrlStaffSelect'
+            }))
+            .when('/activity', angularAMD.route({
+                templateUrl: '../template/activity-staff-slct.html?stamp=' + prisAdmGCfg.stamp,
+                controller: 'ctrlStaffSelect'
+            }))
+            .when('/activity/:nodeId', angularAMD.route({
+                templateUrl: '../template/activity-staff-slct.html?stamp=' + prisAdmGCfg.stamp,
+                controller: 'ctrlStaffSelect'
             }));
         }
     ]);

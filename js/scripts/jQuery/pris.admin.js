@@ -2005,6 +2005,8 @@
                     if (newChangedNodes.length > 0) {
                         var url = apiPrefix + $('#post_sbmtMenuRole').val();
 
+                        console.log(changedNodesObj);
+
                         $.post(url, changedNodesObj, function(data) {
                             if (data.success) {
                                 $('#flat_roleMenu').val('success');
@@ -2097,6 +2099,26 @@
             });
             this.zTree({
                 id: '#tree_roleMenu',
+                // zTree's setting option
+                setting: '1',
+                // hightlight one default node
+                defaultNode: '1',
+                // when hover a node, and this node's level > 0, than hide add btn
+                showAddBtnOnLevel: '0',
+                // click menu to load new data or not
+                menuHasLink: true
+            }); // tree
+            this.zTree({
+                id: '#tree_activity',
+                // zTree's setting option
+                setting: '2',
+                // get json data base on custom url
+                // used for debug
+                // dataUrl: $('#tree_roleGroup').attr('data-source') + ''
+                dataUrl: $('#tree_activity').attr('data-source') + '1'
+            });
+            this.zTree({
+                id: '#tree_activityRole',
                 // zTree's setting option
                 setting: '1',
                 // hightlight one default node
